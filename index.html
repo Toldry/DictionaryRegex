@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dictionary Regex</title>
+    <style>
+        body {
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Dictionary Regex</h3>
+        <p>Enter a regular expression in the text box below. The matched results from the Oxford English Dictionary will be listed</p>
+        <input name="input_regexTextField" type="text"/>
+        <input name="input_findMatchesButton" type="button" value="Find matches">
+    </div>
+    <div>
+        <p name="p_errorMessage" style="color: red; display:none;">Invalid regular expression</p>
+    </div>
+    <span style="margin-top: 20px;">Number of matches: </span>
+    <span name="span_numberOfMatches"></span>
+    <ol name="ol_matches">
+    </ol>
+</body>
+<script src="words.txt" type="text/plain"></script>
+<script src="app.js"></script>
+</html>
