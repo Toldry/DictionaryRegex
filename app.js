@@ -21,6 +21,7 @@ var input_findMatchesButton = document.getElementsByName('input_findMatchesButto
 var ol_matches = document.getElementsByName('ol_matches')[0];
 var span_numberOfMatches = document.getElementsByName('span_numberOfMatches')[0];
 var p_errorMessage = document.getElementsByName('p_errorMessage')[0];
+var a_linkToSearch = document.getElementsByName('a_linkToSearch')[0];
 
 var findMatches = function(regex) {
     console.log('Getting matches for regular expression: ' + regex);
@@ -36,8 +37,8 @@ var findMatches = function(regex) {
     return matches;
 }
 
-input_findMatchesButton.onclick = function() {
-    // Remove previous matches
+var onClickFindMatches = function() {
+	// Remove previous matches
     span_numberOfMatches.innerText = '0';
     while(ol_matches.hasChildNodes()) {
         ol_matches.removeChild(ol_matches.lastChild);
@@ -46,6 +47,10 @@ input_findMatchesButton.onclick = function() {
     p_errorMessage.style.display = 'none';
 
     var userInput = input_userInputBox.value;
+	
+	// Put text value in hash
+    a_linkToSearch.href = '#' + userInput;
+    a_linkToSearch.innerHTML = a_linkToSearch.href;
 
     try {
         var regex = new RegExp(userInput, 'g');
@@ -67,4 +72,13 @@ input_findMatchesButton.onclick = function() {
         listItem.innerHTML = match;
         ol_matches.appendChild(listItem);
     }
+}
+
+input_findMatchesButton.onclick = onClickFindMatches;
+a_linkToSearch.href = a_linkToSearch.innerHTML = window.location.href;
+
+// Check hash link
+if(window.location.hash) {
+	input_userInputBox.value = window.location.hash.split('#')[1];
+    onClickFindMatches();
 }

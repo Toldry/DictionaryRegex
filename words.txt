@@ -61,12 +61,10 @@ Abominable snowman
 Abominate
 Aboriginal
 Aborigine
-Usage
 Abort
 Abortion
 Aboriginal
 Aborigine
-Usage
 Abort
 Abortion
 Abortive
@@ -410,7 +408,6 @@ Advisable
 Advise
 Advisedly
 Adviser
-Usage
 Advisory
 Advocaat
 Advocacy
@@ -440,7 +437,6 @@ Afar
 Affable
 Affair
 Affect
-Usage
 Affectation
 Affected
 Affection
@@ -522,7 +518,6 @@ Agglomerate
 Agglutinate
 Aggrandize
 Aggravate
-Usage
 Aggregate
 Aggression
 Aggressive
@@ -569,10 +564,8 @@ Ailment
 Aim
 Aimless
 Ain't
-Usage
 Aimless
 Ain't
-Usage
 Air
 Airbase
 Air-bed
@@ -676,7 +669,6 @@ Algol
 Algorithm
 Alias
 Alibi
-Usage
 Alien
 Alienable
 Alienate
@@ -686,7 +678,6 @@ Alike
 Alimentary
 Alimentary canal
 Alimony
-Usage
 Aliphatic
 Aliquot
 Alive
@@ -697,7 +688,6 @@ Alkane
 Alkene
 Alkyne
 All
-Usage
 Allah
 Allay
 All-clear
@@ -780,7 +770,6 @@ Almanac
 Almighty
 Almond
 Almoner
-Usage
 Almost
 Alms
 Almshouse
@@ -800,7 +789,6 @@ Alpha particle
 Alpine
 Already
 Alright
-Usage
 Alsatian
 Also
 Also-ran
@@ -811,18 +799,15 @@ Altercate
 Alter ego
 Alter ego
 Alternate
-Usage
 Alternate angles
 Alternating current
 Alternative
-Usage
 Alternator
 Although
 Altimeter
 Altitude
 Alto
 Altogether
-Usage
 Altruism
 Alum
 Alumina
@@ -867,7 +852,6 @@ Ameliorate
 Amen
 Amenable
 Amend
-Usage
 Amendment
 Amends
 Amenity
@@ -1123,7 +1107,6 @@ Antibody
 Antic
 Antichrist
 Anticipate
-Usage
 Anticlerical
 Anticlimax
 Anticlockwise
@@ -1162,7 +1145,6 @@ Anti-semite
 Antiseptic
 Antiserum
 Antisocial
-Usage
 Antistatic
 Anti-tank
 Antitetanus
@@ -1181,7 +1163,6 @@ Any
 Anybody
 Anyhow
 Anyone
-Usage
 Anything
 Anyway
 Anywhere
@@ -1215,7 +1196,6 @@ Any
 Anybody
 Anyhow
 Anyone
-Usage
 Anything
 Anyway
 Anywhere
@@ -1364,9 +1344,7 @@ Ar
 Arab
 Arabesque
 Arabian
-Usage
 Arabian
-Usage
 Arabic
 Arabic numeral
 Arable
@@ -1405,7 +1383,6 @@ Archbishopric
 Archdeacon
 Archdiocese
 Arabian
-Usage
 Arabic
 Arabic numeral
 Arable
@@ -1678,7 +1655,6 @@ Assimilate
 Assist
 Assistant
 Assizes
-Usage
 Assoc.
 Associate
 Association
@@ -1728,8 +1704,7 @@ Atavism
 Ataxia
 Ate
 -ate
--
-Atelier
+-Atelier
 Atheism
 Atherosclerosis
 Athirst
@@ -1928,10 +1903,8 @@ Avuncular
 Await
 Awake
 Awaken
-Usage
 Award
 Aware
-Usage
 Awash
 Away
 Awe
@@ -2148,7 +2121,6 @@ Baloney
 Balsa
 Balsam
 Baluster
-Usage
 Balustrade
 Bamboo
 Bamboo shoot
@@ -2182,7 +2154,6 @@ Bangle
 Banian
 Banish
 Banister
-Usage
 Banjo
 Bank
 Banknote
@@ -3028,7 +2999,6 @@ Boron
 Borough
 Borrow
 Borstal
-Usage
 Bortsch
 Borzoi
 Bosh
@@ -3357,7 +3327,6 @@ Broken-down
 Broken-hearted
 Broken home
 Broker
-Usage
 Brokerage
 Brolly
 Bromide
@@ -3553,7 +3522,6 @@ Burger
 Burgher
 Burglar
 Burglary
-Usage
 Burgle
 Burgomaster
 Burgundy
@@ -3887,7 +3855,6 @@ Cancel
 Cancer
 Candela
 Candelabrum
-Usage
 Candid
 Candida
 Candidate
@@ -3977,7 +3944,6 @@ Capital levy
 Capital sum
 Capital transfer tax
 Capital transfer tax
-Usage
 Capitation
 Capitular
 Capitulate
@@ -4023,9 +3989,7 @@ Carbolic
 Carbolic soap
 Car bomb
 Carbon
-Carbon-
-Carbon-
-Carbonaceous
+Carbon-Carbon-Carbonaceous
 Carbonate
 Carbon copy
 Carbon dating
@@ -4070,7 +4034,6 @@ Card-table
 Card vote
 Care
 Careen
-Usage
 Career
 Careerist
 Carefree
@@ -4260,8 +4223,7 @@ Catchment
 Catchment area
 Catchpenny
 Catch-phrase
-Catch-
-Catchweight
+Catch-Catchweight
 Catchword
 Catchy
 Cat door
@@ -4392,7 +4354,6 @@ Cellulite
 Celluloid
 Cellulose
 Celsius
-Usage
 Celt
 Celtic
 Cement
@@ -4402,10 +4363,8 @@ Cenotaph
 Cenozoic
 Censer
 Censor
-Usage
 Censorious
 Censure
-Usage
 Census
 Cent
 Centaur
@@ -4418,7 +4377,6 @@ Centerfold
 Centesimal
 Centi-
 Centigrade
-Usage
 Centigram
 Centiliter
 Centilitre
@@ -4434,7 +4392,6 @@ Centralize
 Central nervous system
 Central processor
 Centre
-Usage
 Centre back
 Centreboard
 Centrefold
@@ -4452,7 +4409,6 @@ Centripetal force
 Centrist
 Centurion
 Century
-Usage
 Cephalic
 Cephalopod
 Ceramic
@@ -4482,7 +4438,6 @@ Cert. Ed.
 Certifiable
 Certificate
 Certificate of secondary education
-Usage
 Certified cheque
 Certify
 Certitude
@@ -4542,7 +4497,6 @@ Chamois
 Chamomile
 Champ
 Champagne
-Usage
 Champers
 Champion
 Championship
@@ -4859,7 +4813,6 @@ Chromium
 Chromium plate
 Chromosome
 Chronic
-Usage
 Chronicle
 Chronological
 Chronology
@@ -5043,8 +4996,7 @@ Classroom
 Classy
 Clatter
 Clause
-Clause 
-Claustrophobia
+Clause Claustrophobia
 Clavichord
 Clavicle
 Claw
@@ -5462,7 +5414,6 @@ Columbine
 Column
 Columnist
 Com-
-Usage
 Coma
 Comatose
 Comb
@@ -5596,7 +5547,6 @@ Community
 Community centre
 Community charge
 Community charge
-Usage
 Community home
 Community service
 Community singing
@@ -5611,10 +5561,8 @@ Companionship
 Companion-way
 Company
 Comparable
-Usage
 Comparative
 Compare
-Usage
 Comparison
 Compartment
 Compartmental
@@ -5640,12 +5588,10 @@ Competitor
 Compile
 Compiler
 Complacent
-Usage
 Complain
 Complainant
 Complaint
 Complaisant
-Usage
 Complement
 Complementary
 Complementary medicine
@@ -5664,7 +5610,6 @@ Comply
 Component
 Comport
 Compose
-Usage
 Composer
 Composite
 Composition
@@ -5684,7 +5629,6 @@ Compress
 Compression
 Compressor
 Comprise
-Usage
 Compromise
 Comptroller
 Compulsion
@@ -5763,7 +5707,6 @@ Conditional
 Conditioned reflex
 Conditioner
 Condole
-Usage
 Condolence
 Condom
 Condominium
@@ -5833,7 +5776,6 @@ Congenial
 Congenital
 Conger
 Congeries
-Usage
 Congest
 Congestion
 Conglomerate
@@ -5919,7 +5861,6 @@ Consistory
 Consolation
 Consolation prize
 Console
-Usage
 Consolidate
 Consommé
 Consonance
@@ -6005,14 +5946,12 @@ Continental shelf
 Contingency
 Contingent
 Continual
-Usage
 Continuance
 Continuation
 Continue
 Continuity
 Continuo
 Continuous
-Usage
 Continuous assessment
 Continuum
 Contort
@@ -6043,7 +5982,6 @@ Contrast
 Contravene
 Contretemps
 Contribute
-Usage
 Contribution
 Contributory
 Contrite
@@ -6055,7 +5993,6 @@ Controller
 Control tower
 Controversial
 Controversy
-Usage
 Controvert
 Contumacious
 Contumely
@@ -6399,7 +6336,6 @@ Court shoe
 Courtyard
 Couscous
 Cousin
-Usage
 Couture
 Couturier
 Cove
@@ -6544,7 +6480,6 @@ Credential
 Credibility
 Credibility gap
 Credible
-Usage
 Credit
 Creditable
 Credit card
@@ -6554,7 +6489,6 @@ Credit rating
 Creditworthy
 Credo
 Credulous
-Usage
 Creed
 Creek
 Creel
@@ -6583,7 +6517,6 @@ Crepuscular
 Cres.
 Cresc.
 Crescendo
-Usage
 Crescent
 Cress
 Crest
@@ -6623,7 +6556,6 @@ Crispbread
 Crispy
 Criss-cross
 Criterion
-Usage
 Critic
 Critical
 Critical path
@@ -6720,7 +6652,6 @@ Crt
 Cru
 Cruces
 Crucial
-Usage
 Crucible
 Cruciferous
 Crucifix
@@ -6778,7 +6709,6 @@ Crystalloid
 Cs
 C/s
 Cse
-Usage
 Cs gas
 Ctc
 Cu
@@ -6846,7 +6776,6 @@ Cupboard
 Cupboard love
 Cup final
 Cupful
-Usage
 Cupid
 Cupidity
 Cupid's bow
@@ -7112,7 +7041,6 @@ Dashing
 Dastardly
 Dat
 Data
-Usage
 Data bank
 Database
 Datable
@@ -7193,12 +7121,10 @@ Dead shot
 Dead weight
 Dead wood
 Deaf-and-dumb alphabet
-Usage
 Deafen
 Deaf mute
 Deal
 Dealer
-Usage
 Dealings
 Dealt
 Dean
@@ -7211,7 +7137,6 @@ Deathbed
 Deathblow
 Death certificate
 Death duty
-Usage
 Deathly
 Death-mask
 Death penalty
@@ -7255,7 +7180,6 @@ Débutante
 Dec.
 Deca-
 Decade
-Usage
 Decadence
 Decaffeinated
 Decagon
@@ -7302,7 +7226,6 @@ Decimal fraction
 Decimalize
 Decimal point
 Decimate
-Usage
 Decimeter
 Decimetre
 Decipher
@@ -7411,7 +7334,6 @@ Define
 Definite
 Definition
 Definitive
-Usage
 Deflate
 Deflation
 Deflect
@@ -7621,9 +7543,7 @@ Depot
 Deprave
 Depravity
 Deprecate
-Usage
 Depreciate
-Usage
 Depreciation
 Depredation
 Depress
@@ -7871,10 +7791,8 @@ Diatribe
 Diazepam
 Dibble
 Dice
-Usage
 Dicey
 Dichotomy
-Usage
 Dichromatic
 Dick
 Dickens
@@ -7899,7 +7817,6 @@ Diddums
 Didgeridoo
 Didn't
 Die
-Usage
 Die-casting
 Die-hard
 Dielectric
@@ -7917,7 +7834,6 @@ Dif-
 Differ
 Difference
 Different
-Usage
 Differential
 Differential calculus
 Differential gear
@@ -7943,7 +7859,6 @@ Dignify
 Dignitary
 Dignity
 Digraph
-Usage
 Digress
 Digs
 Dike
@@ -7954,7 +7869,6 @@ Dilate
 Dilatory
 Dildo
 Dilemma
-Usage
 Dilettante
 Diligent
 Dill
@@ -8004,7 +7918,6 @@ Dioxide
 Dip
 Dip. Ed.
 Diphtheria
-Usage
 Diphthong
 Diplodocus
 Diploma
@@ -8099,9 +8012,7 @@ Disco
 Discolor
 Discolour
 Discomfit
-Usage
 Discomfort
-Usage
 Discompose
 Disco music
 Disconcert
@@ -8180,7 +8091,6 @@ Disinherit
 Disintegrate
 Disinter
 Disinterested
-Usage
 Disinvest
 Disjoint
 Disjunction
@@ -8233,10 +8143,8 @@ Disport
 Disposable
 Disposable income
 Disposal
-Usage
 Dispose
 Disposition
-Usage
 Dispossess
 Disproof
 Disproportion
@@ -8310,7 +8218,6 @@ Distress
 Distressed
 Distressed area
 Distribute
-Usage
 Distribution
 Distributive
 Distributor
@@ -8328,7 +8235,6 @@ Ditch
 Dither
 Dithyramb
 Ditto
-Usage
 Ditto marks
 Ditty
 Diuretic
@@ -8547,7 +8453,6 @@ Double glazing
 Double helix
 Double-jointed
 Double negative
-Usage
 Double-park
 Double pneumonia
 Double-quick
@@ -8820,7 +8725,6 @@ Dud
 Dude
 Dudgeon
 Due
-Usage
 Duel
 Duenna
 Duet
@@ -8917,7 +8821,6 @@ Duty-free
 Duty-free shop
 Duvet
 Dwarf
-Usage
 Dwell
 Dwelling
 Dwindle
@@ -9066,8 +8969,7 @@ Ecumenical
 Eczema
 Ed.
 -ed
--
-Edam
+-Edam
 Eddy
 Edelweiss
 Edema
@@ -9094,7 +8996,6 @@ Educe
 Edwardian
 -ee
 Eec
-Usage
 Eeg
 Eel
 -eer
@@ -9102,7 +9003,6 @@ Eerie
 Ef-
 Efface
 Effect
-Usage
 Effective
 Effectual
 Effeminate
@@ -9138,9 +9038,7 @@ Eglantine
 Ego
 Egocentric
 Egoism
-Usage
 Egotism
-Usage
 Ego-trip
 Egregious
 Egress
@@ -9313,7 +9211,6 @@ Elves
 Elvish
 Elysium
 Em
-Em-1 ,2 see *en-1,2.
 'Em
 Emaciate
 Email
@@ -9350,7 +9247,6 @@ Embroil
 Embryo
 Embryology
 Emend
-Usage
 Emerald
 Emerald green
 Emerald isle
@@ -9376,9 +9272,7 @@ Emolument
 Emote
 Emotion
 Emotional
-Usage
 Emotive
-Usage
 Empanel
 Empathize
 Empathy
@@ -9524,7 +9418,6 @@ Enmity
 Ennoble
 Ennui
 Enormity
-Usage
 Enormous
 Enough
 En passant
@@ -9637,7 +9530,6 @@ Equality
 Equalize
 Equalizer
 Equally
-Usage
 Equal opportunity
 Equanimity
 Equate
@@ -9703,9 +9595,7 @@ Equivocate
 Er
 Er
 -er
--
--
-Era
+--Era
 Eradicate
 Erase
 Eraser
@@ -9765,7 +9655,6 @@ Escritoire
 Escudo
 Escutcheon
 Eskimo
-Usage
 Esn
 Esophagus
 Esoteric
@@ -9882,7 +9771,6 @@ Estate
 Estate agent
 Estate car
 Estate duty
-Usage
 Esteem
 Ester
 Estimable
@@ -9973,7 +9861,6 @@ Even money
 Evens
 Evensong
 Event
-Usage
 Eventful
 Eventide
 Eventing
@@ -9981,7 +9868,6 @@ Eventual
 Eventuality
 Eventuate
 Ever
-Usage
 Evergreen
 Everlasting
 Evermore
@@ -10038,12 +9924,9 @@ Excellent
 Excentric
 Except
 Excepting
-Usage
 Exception
 Exceptionable
-Usage
 Exceptional
-Usage
 Excerpt
 Excess
 Excess baggage
@@ -10051,7 +9934,6 @@ Excessive
 Exchange
 Exchange rate
 Exchequer
-Usage
 Excise
 Excitable
 Excite
@@ -10194,7 +10076,6 @@ Expunge
 Expurgate
 Exquisite
 Ex-serviceman
-F
 F
 Fa
 Fab
@@ -10377,7 +10258,6 @@ Fart
 Farther
 Farthest
 Farthing
-Usage
 Farthingale
 Fasces
 Fascia
@@ -10451,7 +10331,6 @@ Fearful
 Fearless
 Fearsome
 Feasible
-Usage
 Feast
 Feat
 Feather
@@ -10910,7 +10789,6 @@ Flame-thrower
 Flaming
 Flamingo
 Flammable
-Usage
 Flan
 Flange
 Flank
@@ -10951,7 +10829,6 @@ Flattery
 Flatulent
 Flatworm
 Flaunt
-Usage
 Flautist
 Flavor
 Flavoring
@@ -11070,7 +10947,6 @@ Flounder
 Flour
 Flourish
 Flout
-Usage
 Flow
 Flow chart
 Flower
@@ -11316,7 +11192,6 @@ Foremost
 Forename
 Forenoon
 Forensic
-Usage
 Foreordain
 Forepaw
 Foreplay
@@ -11374,7 +11249,6 @@ Formerly
 Formica
 Formic acid
 Formidable
-Usage
 Formless
 Formula
 Formulary
@@ -11680,7 +11554,6 @@ Ft
 Ft-se
 Fuchsia
 Fuck
-Usage
 Fuck-up
 Fuddle
 Fuddy-duddy
@@ -11719,12 +11592,10 @@ Fulmar
 Fulminant
 Fulminate
 Fulsome
-Usage
 Fumble
 Fume
 Fumigate
 Fun
-Usage
 Function
 Functional
 Functionalism
@@ -11771,12 +11642,10 @@ Furrier
 Furrow
 Furry
 Further
-Usage
 Furtherance
 Further education
 Furthermore
 Furthest
-Usage
 Furtive
 Fury
 Furze
@@ -11804,7 +11673,6 @@ Fuze
 Fuzz
 Fuzzy
 -fy
-G
 G
 Ga
 Gab
@@ -11993,7 +11861,6 @@ Gawk
 Gawky
 Gawp
 Gay
-Usage
 Gayety
 Gaze
 Gazebo
@@ -12516,7 +12383,6 @@ Gouge
 Goulash
 Gourd
 Gourmand
-Usage
 Gourmandise
 Gourmet
 Gout
@@ -12547,7 +12413,6 @@ Gradualism
 Graduate
 Graeco-roman
 Graffiti
-Usage
 Graft
 Grail
 Grain
@@ -13065,7 +12930,6 @@ Halberd
 Halcyon
 Hale
 Half
-Usage
 Half-and-half
 Half-back
 Half-baked
@@ -13089,7 +12953,6 @@ Half measures
 Half moon
 Half nelson
 Halfpenny
-Usage
 Half-sister
 Half-term
 Half-timbered
@@ -13223,7 +13086,6 @@ Happy medium
 Hara-kiri
 Harangue
 Harass
-Usage
 Harbinger
 Harbor
 Harbour
@@ -14574,7 +14436,6 @@ Hogwash
 Ho-ho
 Hoick
 Hoi polloi
-Usage
 Hoist
 Hoity-toity
 Hokum
@@ -14654,7 +14515,6 @@ Homo
 Homo-
 Homoeopathy
 Homogeneous
-Usage
 Homogenize
 Homograph
 Homologous
@@ -14718,7 +14578,6 @@ Hop
 Hope
 Hopeful
 Hopefully
-Usage
 Hopeless
 Hopper
 Hopping mad
@@ -14827,7 +14686,6 @@ House arrest
 Houseboat
 Housebound
 Housebreaking
-Usage
 Housecoat
 Housefly
 Household
@@ -15320,10 +15178,8 @@ Impeach
 Impeccable
 Impecunious
 Impedance
-Usage
 Impede
 Impediment
-Usage
 Impedimenta
 Impel
 Impend
@@ -15393,9 +15249,7 @@ Impressionable
 Impressionism
 Impressive
 Imprimatur
-Usage
 Imprint
-Usage
 Imprison
 Improbable
 Improbity
@@ -15475,7 +15329,6 @@ Incest
 Incestuous
 Inch
 Inchoate
-Usage
 Incidence
 Incident
 Incidental
@@ -15730,7 +15583,6 @@ Infection
 Infectious
 Infelicity
 Infer
-Usage
 Inference
 Inferior
 Inferiority
@@ -15758,7 +15610,6 @@ Infix
 In flagrante delicto
 Inflame
 Inflammable
-Usage
 Inflammation
 Inflammatory
 Inflatable
@@ -15799,13 +15650,10 @@ Infuse
 Infusible
 Infusion
 -ing
--
-Ingenious
-Usage
+-Ingenious
 Ingénue
 Ingenuity
 Ingenuous
-Usage
 Ingest
 Inglenook
 Inglorious
@@ -15829,7 +15677,6 @@ Inherent
 Inherit
 Inheritance
 Inheritance tax
-Usage
 Inhibit
 Inhibition
 Inhospitable
@@ -16010,7 +15857,6 @@ Intake
 Intangible
 Integer
 Integral
-Usage
 Integral calculus
 Integrate
 Integrated circuit
@@ -16027,12 +15873,10 @@ Intemperate
 Intend
 Intended
 Intense
-Usage
 Intensifier
 Intensify
 Intensity
 Intensive
-Usage
 Intensive care
 Intent
 Intention
@@ -16064,7 +15908,6 @@ Interdisciplinary
 Interest
 Interesting
 Interface
-Usage
 Interfacing
 Interfere
 Interference
@@ -16091,7 +15934,6 @@ Intermarry
 Intermediary
 Intermediate
 Interment
-Usage
 Intermezzo
 Interminable
 Intermingle
@@ -16099,7 +15941,6 @@ Intermission
 Intermittent
 Intermix
 Intern
-Usage
 Internal
 Internal-combustion engine
 Internal evidence
@@ -16349,7 +16190,6 @@ Irrupt
 Is
 Isbn
 -ise
-Usage
 -ish
 Isinglass
 Islam
@@ -16409,7 +16249,6 @@ Ivory
 Ivory tower
 Ivy
 -ize
-Usage
 J
 Jab
 Jabber
@@ -16543,7 +16382,6 @@ Jet set
 Jettison
 Jetty
 Jew
-Usage
 Jewel
 Jeweler
 Jeweller
@@ -16579,7 +16417,6 @@ Jive
 Jnr.
 Job
 Jobber
-Usage
 Jobbery
 Jobbing
 Jobcentre
@@ -16686,7 +16523,6 @@ July
 Jumble
 Jumble sale
 Jumbo
-Usage
 Jump
 Jumped-up
 Jumper
@@ -16737,7 +16573,6 @@ Juvenile court
 Juvenile delinquency
 Juvenilia
 Juxtapose
-K
 K
 Kaffir
 Kafkaesque
@@ -16862,9 +16697,7 @@ Kilojoule
 Kiloliter
 Kilolitre
 Kilometer
-Usage
 Kilometre
-Usage
 Kiloton
 Kilovolt
 Kilowatt
@@ -16875,7 +16708,6 @@ Kimono
 Kin
 -kin
 Kind
-Usage
 Kindergarten
 Kind-hearted
 Kindle
@@ -16913,7 +16745,6 @@ Kinky
 Kinsfolk
 Kinship
 Kinsman
-Usage
 Kiosk
 Kip
 Kipper
@@ -17058,7 +16889,6 @@ Kv
 Kw
 Kwh
 Kyle
-L
 L
 £
 La
@@ -17228,7 +17058,6 @@ Laptop
 Lapwing
 Larboard
 Larceny
-Usage
 Larch
 Lard
 Larder
@@ -17292,7 +17121,6 @@ Latitude
 Latitudinarian
 Latrine
 Latter
-Usage
 Latter-day
 Latter-day saints
 Latterly
@@ -17301,10 +17129,8 @@ Lattice window
 Latvian
 Laud
 Laudable
-Usage
 Laudanum
 Laudatory
-Usage
 Laugh
 Laughable
 Laughing
@@ -17382,7 +17208,6 @@ Leading article
 Leading light
 Leading note
 Leading question
-Usage
 Lead pencil
 Lead-poisoning
 Leaf
@@ -17536,7 +17361,6 @@ Lesbian
 Lese-majesty
 Lesion
 Less
-Usage
 -less
 Lessee
 Lessen
@@ -17544,7 +17368,6 @@ Lesser
 Lesson
 Lessor
 Lest
-Usage
 Let
 Lb
 Lbc
@@ -17585,7 +17408,6 @@ Level pegging
 Lever
 Leverage
 Leveraged buyout
-Usage
 Leveret
 Leviathan
 Levis
@@ -17601,7 +17423,6 @@ Lf
 Li
 Liability
 Liable
-Usage
 Liaise
 Liaison
 Liana
@@ -17611,9 +17432,7 @@ Lib
 Libation
 Libel
 Liberal
-Usage
 Liberal democrat
-Usage
 Liberalize
 Liberate
 Libertine
@@ -17640,7 +17459,6 @@ Licorice
 Lid
 Lido
 Lie
-Usage
 Lied
 Lie-detector
 Lie-down
@@ -17680,7 +17498,6 @@ Lift
 Lift-off
 Ligament
 Ligature
-Usage
 Light
 Light-bulb
 Lighten
@@ -17710,9 +17527,7 @@ Lignite
 Lignum vitae
 Likable
 Like
-Usage
 -like
-Usage
 Likeable
 Likelihood
 Likely
@@ -17789,7 +17604,6 @@ Linkman
 Links
 Link-up
 Linnaean
-Usage
 Linnet
 Lino
 Linocut
@@ -17882,7 +17696,7 @@ Liver
 Liveried
 Liverish
 Liverpudlian
-Liver sausage
+Liver sa
 Liverwort
 Livery
 Livery stable
@@ -17942,7 +17756,6 @@ Localize
 Local time
 Local train
 Locate
-Usage
 Location
 Loc. Cit.
 Loch
@@ -18096,7 +17909,6 @@ Loss-leader
 Lost
 Lost cause
 Lot
-Usage
 Loth
 Lothario
 Lotion
@@ -18263,16 +18075,13 @@ Lutetium
 Lutheran
 Lux
 Luxuriant
-Usage
 Luxuriate
 Luxurious
-Usage
 Luxury
 Lv
 Lw
 -ly
--
-Lychee
+-Lychee
 Lych-gate
 Lycra
 Lye
@@ -18295,7 +18104,6 @@ Lyricist
 Lysergic acid diethylamide
 -lysis
 -lyte
-M
 M
 Ma
 Ma'am
@@ -18462,7 +18270,6 @@ Major-domo
 Majorette
 Major-general
 Majority
-Usage
 Majority rule
 Make
 Make-believe
@@ -18786,10 +18593,8 @@ Mastectomy
 Master
 Master-class
 Masterful
-Usage
 Master-key
 Masterly
-Usage
 Mastermind
 Master of ceremonies
 Master of the rolls
@@ -18818,7 +18623,6 @@ Matchstick
 Matchwood
 Mate
 Mater
-Usage
 Material
 Materialism
 Materialize
@@ -18845,7 +18649,6 @@ Matriculate
 Matrimony
 Matrix
 Matron
-Usage
 Matronly
 Matron of honour
 Matt
@@ -18883,10 +18686,8 @@ Maxim
 Maxima
 Maximal
 Maximize
-Usage
 Maximum
 May
-Usage
 Maya
 Maybe
 May day
@@ -18936,7 +18737,6 @@ Mean sea level
 Means test
 Meant
 Meantime
-Usage
 Meanwhile
 Meany
 Measles
@@ -18965,7 +18765,6 @@ Medallist
 Meddle
 Meddlesome
 Media
-Usage
 Mediaeval
 Medial
 Median
@@ -19389,7 +19188,6 @@ Military
 Military honours
 Military police
 Militate
-Usage
 Militia
 Milk
 Milk and honey
@@ -19419,7 +19217,6 @@ Millet
 Millet-grass
 Milli-
 Milliard
-Usage
 Millibar
 Milligram
 Milliliter
@@ -19630,7 +19427,7 @@ Mistrust
 Misty
 Misunderstand
 Misunderstanding
-Misusage
+Mis
 Misuse
 Mit
 Mite
@@ -19779,7 +19576,6 @@ Monger
 Mongol
 Mongolian
 Mongolism
-Usage
 Mongoloid
 Mongoose
 Mongrel
@@ -20072,7 +19868,6 @@ Muggins
 Muggy
 Mug shot
 Muhammadan
-Usage
 Mujahidin
 Mulatto
 Mulberry
@@ -20185,7 +19980,6 @@ Muslin
 Musquash
 Mussel
 Must
-Usage
 Mustache
 Mustang
 Mustard
@@ -20213,7 +20007,6 @@ Mutton
 Mutton dressed as lamb
 Mutton-head
 Mutual
-Usage
 Muzak
 Muzzle
 Muzzy
@@ -20240,7 +20033,6 @@ Mystique
 Myth
 Mythology
 Myxomatosis
-N
 N
 Na
 Naafi
@@ -20356,7 +20148,6 @@ Nazarene
 Nazi
 Nb
 Ncb
-Usage
 Nco
 Ncp
 Nd
@@ -20426,10 +20217,8 @@ Negligible
 Negotiable
 Negotiate
 Negress
-Usage
 Negritude
 Negro
-Usage
 Negroid
 Neigh
 Neighbor
@@ -20690,7 +20479,6 @@ Nominative
 Nominee
 Non-
 Non-
-Usage
 Nonagenarian
 Non-aggression
 Nonagon
@@ -20714,7 +20502,6 @@ Nondescript
 Non-drinker
 Non-driver
 None
-Usage
 Nonentity
 Nones
 Non-essential
@@ -20825,7 +20612,6 @@ Nostrum
 Nosy
 Nosy parker
 Not
-Usage
 Notable
 Notary
 Notation
@@ -20912,7 +20698,6 @@ Null
 Nullify
 Numb
 Number
-Usage
 Number crunching
 Numberless
 Number one
@@ -20974,7 +20759,6 @@ O
 O'
 -o
 -o-
-Usage
 Oaf
 Oak
 Oak-apple
@@ -21127,7 +20911,6 @@ Of
 Of-
 Off.
 Off
-Usage
 Offal
 Offbeat
 Off-centre
@@ -21303,7 +21086,6 @@ Onion
 Online
 Onlooker
 Only
-Usage
 Only too
 O.n.o.
 Onomatopoeia
@@ -21315,7 +21097,6 @@ Onside
 Onslaught
 On-street
 Onto
-Usage
 Ontology
 Onus
 Onward
@@ -21552,11 +21333,9 @@ Ostracize
 Ostrich
 Ot
 Other
-Usage
 Other day
 Other half
 Otherwise
-Usage
 Other woman
 Other-worldly
 Otiose
@@ -21581,7 +21360,6 @@ Ourselves
 Ousel
 Oust
 Out
-Usage
 Out-
 Outage
 Out and about
@@ -21839,7 +21617,6 @@ Ovum
 Ow
 Owe
 Owing
-Usage
 Owl
 Owlet
 Own
@@ -21877,7 +21654,6 @@ Oz
 Ozone
 Ozone-friendly
 Ozone layer
-P
 P
 Pa
 Pa
@@ -22330,7 +22106,6 @@ Patent leather
 Patent medicine
 Patent office
 Pater
-Usage
 Paterfamilias
 Paternal
 Paternalism
@@ -22712,15 +22487,12 @@ Perpetuity
 Perplex
 Perplexity
 Per pro.
-Usage
 Perquisite
-Usage
 Perry
 Per se
 Persecute
 Persevere
 Persian
-Usage
 Persian lamb
 Persiflage
 Persimmon
@@ -22748,9 +22520,7 @@ Personnel department
 Perspective
 Perspex
 Perspicacious
-Usage
 Perspicuous
-Usage
 Perspiration
 Perspire
 Persuade
@@ -22840,7 +22610,6 @@ Phenobarbitone
 Phenol
 Phenomenal
 Phenomenon
-Usage
 Pheromone
 Phew
 Phi
@@ -22949,7 +22718,6 @@ Pibroch
 Pica
 Picador
 Picaresque
-Usage
 Picayune
 Piccalilli
 Piccaninny
@@ -23348,7 +23116,6 @@ Pluralism
 Plurality
 Pluralize
 Plus
-Usage
 Plus-fours
 Plush
 Plushy
@@ -23426,7 +23193,6 @@ Polaroid
 Polder
 Pole
 Pole
-Usage
 Poleax
 Poleaxe
 Polecat
@@ -23443,7 +23209,6 @@ Police officer
 Police state
 Police station
 Policy
-Usage
 Policyholder
 Polio
 Poliomyelitis
@@ -23461,7 +23226,6 @@ Politicize
 Politico
 Politics
 Polity
-Usage
 Polka
 Polka dot
 Poll
@@ -23876,7 +23640,6 @@ Pre-echo
 Pre-embryo
 Pre-eminent
 Pre-empt
-Usage
 Pre-emption
 Pre-emptive
 Preen
@@ -23941,7 +23704,6 @@ Prepuce
 Pre-raphaelite
 Pre-record
 Prerequisite
-Usage
 Prerogative
 Pres.
 Presage
@@ -23952,7 +23714,6 @@ Presbytery
 Preschool
 Prescient
 Prescribe
-Usage
 Prescript
 Prescription
 Prescriptive
@@ -24017,9 +23778,7 @@ Pretzel
 Prevail
 Prevalent
 Prevaricate
-Usage
 Prevent
-Usage
 Preventative
 Preventive
 Preview
@@ -24098,7 +23857,6 @@ Prisoner
 Prisoner of conscience
 Prissy
 Pristine
-Usage
 Privacy
 Private
 Private bill
@@ -24158,7 +23916,6 @@ Processor
 Proclaim
 Proclivity
 Procrastinate
-Usage
 Procreate
 Procrustean
 Proctor
@@ -24314,7 +24071,6 @@ Prosaic
 Pros and cons
 Proscenium
 Proscribe
-Usage
 Prose
 Prosecute
 Prosecution
@@ -24335,7 +24091,6 @@ Prostrate
 Prosy
 Protactinium
 Protagonist
-Usage
 Protean
 Protect
 Protection
@@ -24364,7 +24119,6 @@ Protrude
 Protuberant
 Proud
 Prove
-Usage
 Provenance
 Provençal
 Provender
@@ -25068,7 +24822,6 @@ Ratatouille
 Ratbag
 Ratchet
 Rate
-Usage
 Rateable
 Rateable value
 Rate-capping
@@ -25127,7 +24880,6 @@ Rd.
 Re
 Re
 Re-
-Usage
 Reach
 Reach-me-down
 Reacquaint
@@ -25358,7 +25110,6 @@ Red indian
 Redirect
 Rediscover
 Redistribute
-Usage
 Redivide
 Red lead
 Red-letter day
@@ -25487,7 +25238,6 @@ Refusal
 Refuse
 Refusenik
 Refute
-Usage
 Reg
 Regain
 Regal
@@ -25513,7 +25263,6 @@ Register
 Registered nurse
 Registered post
 Register office
-Usage
 Registrar
 Registration
 Registration mark
@@ -25761,7 +25510,6 @@ Republic
 Republican
 Republish
 Repudiate
-Usage
 Repugnance
 Repugnant
 Repulse
@@ -25793,7 +25541,6 @@ Rescript
 Rescue
 Reseal
 Research
-Usage
 Research and development
 Resell
 Resemblance
@@ -26322,7 +26069,6 @@ Roman
 Roman candle
 Roman catholic
 Romance
-Usage
 Roman empire
 Romanesque
 Romanian
@@ -26684,7 +26430,7 @@ Safety net
 Safety pin
 Safety razor
 Safety-valve
- saffron
+saffron
 Sag
 Saga
 Sagacious
@@ -26905,9 +26651,9 @@ Sauerkraut
 Sauna
 Saunter
 Saurian
-Sausage
-Sausage meat
-Sausage roll
+Sa
+Sa meat
+Sa roll
 Sauté
 Sauternes
 Savage
@@ -27019,7 +26765,6 @@ Scavenger
 Sc.d.
 Sce
 Scenario
-Usage
 Scene
 Scenery
 Scene-shifter
@@ -27109,7 +26854,6 @@ Scorpio
 Scorpion
 Scot
 Scotch
-Usage
 Scotch
 Scotch broth
 Scotch egg
@@ -27284,7 +27028,6 @@ Seasick
 Seaside
 Season
 Seasonable
-Usage
 Seasonal
 Seasoning
 Season ticket
@@ -27585,17 +27328,14 @@ Sense
 Senseless
 Sense-organ
 Sensibility
-Usage
 Sensible
 Sensitive
 Sensitize
 Sensor
 Sensory
 Sensual
-Usage
 Sensuality
 Sensuous
-Usage
 Sent
 Sentence
 Sententious
@@ -28884,8 +28624,7 @@ Sombre
 Sombrero
 Some
 -some
--
-Somebody
+-Somebody
 Someday
 Somehow
 Someone
@@ -29902,7 +29641,6 @@ Strap
 Straphanger
 Strapping
 Strata
-Usage
 Stratagem
 Strategic
 Strategy
@@ -30616,7 +30354,6 @@ Synchromesh
 Synchronic
 Synchronism
 Synchronize
-Usage
 Synchronous
 Syncopate
 Syncope
@@ -31002,14 +30739,12 @@ Telecommunication
 Teleconference
 Telefax
 Telegram
-Usage
 Telegraph
 Telegraphic
 Telegraphy
 Telekinesis
 Telemarketing
 Telemessage
-Usage
 Telemetry
 Teleology
 Telepathy
@@ -31219,16 +30954,13 @@ Thai
 Thalidomide
 Thallium
 Than
-Usage
 Thane
 Thank
 Thankful
 Thankfully
-Usage
 Thankless
 Thanksgiving
 That
-Usage
 Thatch
 Thaw
 The
@@ -31359,7 +31091,6 @@ Thoroughfare
 Thoroughgoing
 Those
 Thou
-Usage
 Though
 Thought
 Thoughtful
@@ -31453,7 +31184,6 @@ Thus
 Thwack
 Thwart
 Thy
-Usage
 Thyme
 Thymol
 Thymus
@@ -31513,7 +31243,6 @@ Tilde
 Tile
 Tiling
 Till
-Usage
 Tillage
 Tiller
 Tilt
@@ -31820,7 +31549,6 @@ Tortoiseshell
 Tortoiseshell butterfly
 Tortoiseshell cat
 Tortuous
-Usage
 Torture
 Tory
 Tosa
@@ -32032,7 +31760,6 @@ Transom window
 Transparency
 Transparent
 Transpire
-Usage
 Transplant
 Transponder
 Transport
@@ -32087,7 +31814,6 @@ Treadle
 Treadmill
 Treadwheel
 Treason
-Usage
 Treasonable
 Treasure
 Treasure hunt
@@ -32221,10 +31947,8 @@ Trisect
 Trite
 Tritium
 Triumph
-Usage
 Triumphalism
 Triumphant
-Usage
 Triumvirate
 Trivalent
 Trivet
@@ -32310,7 +32034,6 @@ Trusty
 Truth
 Truthful
 Try
-Usage
 Trying
 Try-on
 Try-out
@@ -32396,7 +32119,6 @@ Tuppenny
 Tupperware
 Turban
 Turbid
-Usage
 Turbine
 Turbo
 Turbo-
@@ -32413,7 +32135,6 @@ Turf
 Turf accountant
 Turgescent
 Turgid
-Usage
 Turk
 Turkey
 Turkeycock
@@ -32544,8 +32265,7 @@ Two-tone
 Two-way
 Two-way mirror
 -ty
--
-Tycoon
+-Tycoon
 Tying
 Tyke
 Tympani
@@ -32577,7 +32297,6 @@ Tyrian purple
 Tyro
 Tzatziki
 U
-0
 Ubiquitous
 U-boat
 U.c.
@@ -32639,9 +32358,7 @@ Umpire
 Umpteen
 Un
 Un-1
-Usage
 Un-2
-Usage
 Un-3
 Unabashed
 Unabated
@@ -33014,9 +32731,7 @@ Uneven
 Uneventful
 Unexampled
 Unexceptionable
-Usage
 Unexceptional
-Usage
 Unexceptional
 Unexciting
 Unexpected
@@ -33157,7 +32872,6 @@ Unionist
 Unionize
 Union jack
 Unique
-Usage
 Unisex
 Unison
 Unit
@@ -33441,9 +33155,7 @@ Unsliced
 Unsmiling
 Unsmoked
 Unsociable
-Usage
 Unsocial
-Usage
 Unsoiled
 Unsold
 Unsolicited
@@ -33519,14 +33231,12 @@ Unthrone
 Untidy
 Untie
 Until
-Usage
 Untimely
 Untiring
 Untitled
 Unto
 Untold
 Untouchable
-Usage
 Untouched
 Untoward
 Untraceable
@@ -33613,7 +33323,6 @@ Uplift
 Up-market
 Upmost
 Upon
-Usage
 Upper
 Upper case
 Upper crust
@@ -33801,7 +33510,6 @@ Varied
 Variegated
 Variety
 Various
-Usage
 Varlet
 Varnish
 Varsity
@@ -33860,7 +33568,6 @@ Velveteen
 Velvet glove
 Ven.
 Venal
-Usage
 Vend
 Vendetta
 Vending-machine
@@ -33875,7 +33582,6 @@ Venetian blind
 Vengeance
 Vengeful
 Venial
-Usage
 Venison
 Venn diagram
 Venom
@@ -33895,7 +33601,6 @@ Veracious
 Veranda
 Verb
 Verbal
-Usage
 Verbalize
 Verbal noun
 Verbatim
@@ -34722,7 +34427,6 @@ Whelm
 Whelp
 When
 Whence
-Usage
 Whenever
 Whensoever
 Where
@@ -34746,7 +34450,6 @@ Whichever
 Whiff
 Whig
 While
-Usage
 Whilst
 Whim
 Whimper
@@ -34830,7 +34533,6 @@ Whittle
 Whiz
 Whiz-kid
 Who
-Usage
 Whoa
 Who'd
 Whodunit
@@ -35012,7 +34714,6 @@ Wisdom
 Wisdom tooth
 Wise
 -wise
-Usage
 Wiseacre
 Wisecrack
 Wise guy
@@ -35225,7 +34926,6 @@ Wort
 Worth
 Worthless
 Worthwhile
-Usage
 Worthy
 -worthy
 Would
@@ -35278,7 +34978,6 @@ Wrist
 Wristlet
 Wrist-watch
 Writ
-C
 Wreckage
 Wrecker
 Wren
@@ -35331,7 +35030,6 @@ Wych-hazel
 Wykehamist
 Wysiwyg
 X
-Usage
 X chromosome
 Xe
 Xenon
@@ -35346,9 +35044,7 @@ Xylem
 Xylophone
 Y
 -y
--
--
-Yacht
+--Yacht
 Yachtsman
 Yack
 Yah
@@ -35532,15 +35228,13 @@ Zone
 Zonked
 Zoo
 Zoological
-Usage
 Zoological garden
 Zoology
-Usage
 Zoom
 Zoom lens
 Zoophyte
 Zoroastrian
 Zr
 Zucchini
-Zulu
-Zygote
+Zul
+Zygot
