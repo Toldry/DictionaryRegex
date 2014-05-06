@@ -25242,6 +25242,7 @@ regatta
 regency
 regenerate
 regent
+regexp
 reggae
 regicide
 regime
@@ -25268,6 +25269,7 @@ regrettable
 regroup
 regrow
 regular
+regular expression
 regulate
 regulation
 regulo
