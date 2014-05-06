@@ -1,4 +1,5 @@
-﻿A-
+﻿A
+A-
 Aa
 Aardvark
 Ab-
@@ -7735,9 +7736,7 @@ Dfm
 Dhal
 Dharma
 Dhoti
-Di-1
-Di-2
-Di-3
+Di-
 Dia.
 Dia-
 Diabetes
@@ -9304,8 +9303,7 @@ Emulsify
 Emulsion
 Emulsion paint
 En
-En-1
-En-2
+En-
 -en
 Enable
 Enact
@@ -9595,7 +9593,7 @@ Equivocate
 Er
 Er
 -er
---Era
+Era
 Eradicate
 Erase
 Eraser
@@ -9897,8 +9895,7 @@ Evolve
 Ewe
 Ewer
 Ex
-Ex-1
-Ex-2
+Ex-
 Exacerbate
 Exact
 Exacting
@@ -15273,8 +15270,7 @@ Impurity
 Impute
 In
 In.
-In-1
-In-2
+In-
 Inability
 In absentia
 Inaccessible
@@ -19323,8 +19319,7 @@ Mire
 Mirror
 Mirror image
 Mirth
-Mis-1
-Mis-2
+Mis-
 Misadventure
 Misalliance
 Misanthrope
@@ -21881,8 +21876,7 @@ Papyrus
 Par
 Par-
 Para
-Para-1
-Para-2
+Para-
 Parable
 Parabola
 Paracetamol
@@ -23888,9 +23882,7 @@ Prize-giving
 Prizewinner
 Pro
 Pro
-Pro-1
-Pro-1
-Pro-2
+Pro-
 Proactive
 Probability
 Probable
@@ -29723,7 +29715,6 @@ Strong-minded
 Strong point
 Strongroom
 Strontium
-Strontium-9
 Strop
 Stroppy
 Strove
@@ -30111,8 +30102,7 @@ Supremacy
 Supreme
 Supreme court
 Supremo
-Sur-1
-Sur-2
+Sur-
 Surcease
 Surcharge
 Surd
@@ -32357,9 +32347,7 @@ Umlaut
 Umpire
 Umpteen
 Un
-Un-1
-Un-2
-Un-3
+Un-
 Unabashed
 Unabated
 Unable
@@ -35044,7 +35032,7 @@ Xylem
 Xylophone
 Y
 -y
---Yacht
+Yacht
 Yachtsman
 Yack
 Yah
