@@ -11,6 +11,7 @@ request.onreadystatechange = function() {
     if(request.readyState === 4) {
         if (request.status === 200) {  // file is found
             words = request.responseText.split('\n');
+            words = words.map(s => s.slice(0,-1));
         }
     }
 }
