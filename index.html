@@ -2,9 +2,20 @@
 <html>
 <head>
     <title>Dictionary Regex</title>
+	<link rel="shortcut icon" href="favicon.png">
     <style>
-        body {
+        span.subMatch {
+            background-color: yellow;
+            border-width: 1px;
+            border-color: black;
+            border-style: solid;
+        }
 
+        span.subMatch:hover {
+            background-color: orange;
+            border-width: 1px;
+            border-color: blue;
+            border-style: solid;
         }
     </style>
 </head>
@@ -12,12 +23,16 @@
     <div>
         <h3>Dictionary Regex</h3>
         <p>Enter a regular expression in the text box below. The matched results from the Oxford English Dictionary will be listed</p>
-        <input name="input_regexTextField" type="text"/>
-        <input name="input_findMatchesButton" type="button" value="Find matches">
+        <div><input name="input_regexTextField" type="text" style="width:40%"/></div>
+        <div><input name="input_findMatchesButton" type="button" value="Find matches"></div>
+        <div><span>Colorize matches</span><input name="input_colorizeSubMatch" type="checkbox" style="margin-bottom: 20px;"></div>
     </div>
     <div>
         <p name="p_errorMessage" style="color: red; display:none;">Invalid regular expression</p>
     </div>
+    <div>Link to this search:</div>
+    <div><a name="a_linkToSearch"></a></div>
+    <hr/>
     <span style="margin-top: 20px;">Number of matches: </span>
     <span name="span_numberOfMatches"></span>
     <ol name="ol_matches">
