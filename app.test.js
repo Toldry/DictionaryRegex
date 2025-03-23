@@ -218,4 +218,81 @@ describe('DictionaryRegex - Handling Large Result Sets', () => {
         expect(document.querySelector('.load-more-btn')).toBeNull();
         expect(dictionaryRegex.elements.matchCount.textContent).toBe('1');
     });
+});
+
+describe('DictionaryRegex - URL Hash Initialization', () => {
+    let dictionaryRegex;
+    
+    beforeEach(() => {
+        // Set up mock DOM
+        document.body.innerHTML = `
+            <input id="regexTextField" type="text">
+            <button id="findMatchesButton">Find Matches</button>
+            <input id="colorizeSubMatch" type="checkbox">
+            <ul id="matches"></ul>
+            <div id="numberOfMatches">0</div>
+            <div id="errorMessage" style="display: none;"></div>
+            <a id="linkToQuery"></a>
+            <div id="matchWarning" style="display: none;">
+                <span id="totalMatchCount"></span>
+                <button id="limitMatches">Show First 5000</button>
+                <button id="showAll">Show All</button>
+            </div>
+        `;
+
+        // Mock dictionary with some test words
+        const testWords = [
+            'running',
+            'jumping',
+            'testing',
+            'coding'
+        ].join('\n');
+
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                ok: true,
+                text: () => Promise.resolve(testWords)
+            })
+        );
+    });
+
+    test('should perform search on load when URL contains hash', async () => {
+        // Set URL hash before initializing
+        window.location.hash = '#%5E.%7B4%7Ding%24'; // URL encoded "^.{4}ing$"
+        
+        // Initialize dictionary regex
+        dictionaryRegex = new DictionaryRegex();
+        
+        // Wait for initialization to complete
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
+        // Verify search was performed
+        expect(dictionaryRegex.elements.input.value).toBe('^.{4}ing$');
+        expect(dictionaryRegex.currentMatches).toHaveLength(3); // Should match 'running', 'jumping' and 'testing'
+        expect(dictionaryRegex.elements.matchCount.textContent).toBe('3');
+        
+        // Verify matches are displayed
+        const matchItems = dictionaryRegex.elements.matchesList.children;
+        expect(matchItems).toHaveLength(3);
+        expect(matchItems[0].textContent).toMatch(/running/);
+        expect(matchItems[1].textContent).toMatch(/jumping/);
+        expect(matchItems[2].textContent).toMatch(/testing/);
+    });
+
+    test('should not perform search on load when URL has no hash', async () => {
+        // Clear URL hash
+        window.location.hash = '';
+        
+        // Initialize dictionary regex
+        dictionaryRegex = new DictionaryRegex();
+        
+        // Wait for initialization to complete
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
+        // Verify no search was performed
+        expect(dictionaryRegex.elements.input.value).toBe('');
+        expect(dictionaryRegex.currentMatches).toHaveLength(0);
+        expect(dictionaryRegex.elements.matchCount.textContent).toBe('0');
+        expect(dictionaryRegex.elements.matchesList.children).toHaveLength(0);
+    });
 }); 

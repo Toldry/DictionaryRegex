@@ -30,9 +30,8 @@ class DictionaryRegex {
         this.elements.queryLink.href = baseUrl;
         this.elements.queryLink.textContent = baseUrl;
         
-        this.loadWords();
         this.initializeEventListeners();
-        this.initializeFromHash();
+        this.initialize();
     }
 
     async loadWords() {
@@ -320,13 +319,21 @@ class DictionaryRegex {
         this.elements.queryLink.textContent = window.location.href.split('#')[0] + hash;
     }
 
-    initializeFromHash() {
+    async initializeFromHash() {
         if (window.location.hash) {
             this.elements.input.value = decodeURIComponent(
                 window.location.hash.substring(1)
             );
+            // Wait for dictionary to load before searching
+            await this.loadWords();
             this.performSearch();
         }
+    }
+
+    // New method to handle async initialization
+    async initialize() {
+        await this.loadWords();
+        this.initializeFromHash();
     }
 }
 
