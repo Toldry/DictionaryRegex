@@ -10,7 +10,12 @@ request.open('GET', path, false);
 request.onreadystatechange = function() {
     if(request.readyState === 4) {
         if (request.status === 200) {  // file is found
+<<<<<<< HEAD
             words = request.responseText.split('\n').map(word => word.replace(/\r$/, ''));
+=======
+            words = request.responseText.split('\n');
+            words = words.map(s => s.slice(0,-1));
+>>>>>>> 04d4dd53bb97a872fc4e40c9f42236b40587b906
         }
     }
 };
@@ -129,6 +134,7 @@ if(window.location.hash) {
 	input_userInputBox.value = decodeURIComponent(window.location.hash.split('#')[1]);
     onClickFindMatches();
 }
+<<<<<<< HEAD
 
 // Add this function at the end of the file
 function initializeExampleQueries() {
@@ -145,3 +151,5 @@ function initializeExampleQueries() {
 
 // Initialize the example queries
 initializeExampleQueries();
+=======
+>>>>>>> 04d4dd53bb97a872fc4e40c9f42236b40587b906
