@@ -2,42 +2,74 @@
 <html>
 <head>
     <title>Dictionary Regex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.png">
-    <style>
-        span.subMatch {
-            background-color: yellow;
-            border-width: 1px;
-            border-color: black;
-            border-style: solid;
-        }
-
-        span.subMatch:hover {
-            background-color: orange;
-            border-width: 1px;
-            border-color: blue;
-            border-style: solid;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div>
+    <div class="input-container">
         <h3>Dictionary Regex</h3>
-        <p>Enter a regular expression in the text box below. The matched results from the Oxford English Dictionary will be listed</p>
-        <div><input name="input_regexTextField" type="text" style="width:40%"/></div>
-        <div><input name="input_findMatchesButton" type="button" value="Find matches"></div>
-        <div><span>Colorize matches</span><input name="input_colorizeSubMatch" type="checkbox" style="margin-bottom: 20px;"></div>
+        <p>Enter a regular expression to search the Oxford English Dictionary</p>
+        
+        <div class="examples-container">
+            <h4>Example Queries</h4>
+            <div class="example-queries">
+                <a href="#astic$" class="example-query">
+                    <div class="description">Words ending in "astic"</div>
+                    <div class="pattern">astic$</div>
+                </a>
+                <a href="#^.{4}ing$" class="example-query">
+                    <div class="description">4-letter words ending in "ing"</div>
+                    <div class="pattern">^.{4}ing$</div>
+                </a>
+                <a href="#^(.+)\1$" class="example-query">
+                    <div class="description">Words that are repeated (like 'murmur')</div>
+                    <div class="pattern">^(.+)\1$</div>
+                </a>
+                <a href="#(.)\1(.)\2(.)\3" class="example-query">
+                    <div class="description">Words with three consecutive pairs of repeated letters</div>
+                    <div class="pattern">(.)\1(.)\2(.)\3</div>
+                </a>
+                <a href="#^(.)(.)(.).\3\2\1$" class="example-query">
+                    <div class="description">7-letter palindromes</div>
+                    <div class="pattern">^(.)(.)(.).\3\2\1$</div>
+                </a>
+            </div>
+        </div>
+
+        <input 
+            name="input_regexTextField" 
+            type="text" 
+            class="input-field" 
+            placeholder="Enter regex pattern..."
+        />
+        <button name="input_findMatchesButton" class="button">Find matches</button>
+        <div class="checkbox-container">
+            <label for="colorize">Colorize matches</label>
+            <input 
+                id="colorize"
+                name="input_colorizeSubMatch" 
+                type="checkbox"
+            >
+        </div>
     </div>
-    <div>
-        <p name="p_errorMessage" style="color: red; display:none;">Invalid regular expression</p>
+
+    <p name="p_errorMessage" class="error-message">Invalid regular expression</p>
+
+    <div class="link-container">
+        <div>Link to this query:</div>
+        <a name="a_linkToQuery"></a>
     </div>
-    <div>Link to this search:</div>
-    <div><a name="a_linkToSearch"></a></div>
+
     <hr/>
-    <span style="margin-top: 20px;">Number of matches: </span>
-    <span name="span_numberOfMatches"></span>
-    <ol name="ol_matches">
-    </ol>
+
+    <div class="results-container">
+        <span>Number of matches: </span>
+        <span name="span_numberOfMatches">0</span>
+        <ol name="ol_matches"></ol>
+    </div>
+
+    <script src="words.txt" type="text/plain"></script>
+    <script src="app.js"></script>
 </body>
-<script src="words.txt" type="text/plain"></script>
-<script src="app.js"></script>
 </html>

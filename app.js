@@ -10,7 +10,7 @@ request.open('GET', path, false);
 request.onreadystatechange = function() {
     if(request.readyState === 4) {
         if (request.status === 200) {  // file is found
-            words = request.responseText.split('\n');
+            words = request.responseText.split('\n').map(word => word.replace(/\r$/, ''));
         }
     }
 };
@@ -22,7 +22,7 @@ var input_colorizeSubMatch = document.getElementsByName('input_colorizeSubMatch'
 var ol_matches = document.getElementsByName('ol_matches')[0];
 var span_numberOfMatches = document.getElementsByName('span_numberOfMatches')[0];
 var p_errorMessage = document.getElementsByName('p_errorMessage')[0];
-var a_linkToSearch = document.getElementsByName('a_linkToSearch')[0];
+var a_linkToQuery = document.getElementsByName('a_linkToQuery')[0];
 
 var findMatches = function (regex) {
     console.log('Getting matches for regular expression: ' + regex);
@@ -64,8 +64,8 @@ var onClickFindMatches = function() {
     var userInput = input_userInputBox.value;
 
 	// Put text value in hash
-    a_linkToSearch.href = '#' + encodeURIComponent(userInput);
-    a_linkToSearch.innerHTML = a_linkToSearch.href;
+    a_linkToQuery.href = '#' + encodeURIComponent(userInput);
+    a_linkToQuery.innerHTML = a_linkToQuery.href;
 
     try {
         var regex = new RegExp(userInput, 'g');
@@ -122,10 +122,26 @@ var onClickFindMatches = function() {
 
 // initialize element properties
 input_findMatchesButton.onclick = onClickFindMatches;
-a_linkToSearch.href = a_linkToSearch.innerHTML = window.location.href;
+a_linkToQuery.href = a_linkToQuery.innerHTML = window.location.href;
 
 // Check hash link
 if(window.location.hash) {
 	input_userInputBox.value = decodeURIComponent(window.location.hash.split('#')[1]);
     onClickFindMatches();
 }
+
+// Add this function at the end of the file
+function initializeExampleQueries() {
+    const exampleLinks = document.querySelectorAll('.example-query');
+    exampleLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const hash = link.getAttribute('href').substring(1); // Remove the # symbol
+            input_userInputBox.value = decodeURIComponent(hash);
+            onClickFindMatches();
+        });
+    });
+}
+
+// Initialize the example queries
+initializeExampleQueries();
