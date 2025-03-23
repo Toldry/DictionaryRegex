@@ -38,37 +38,40 @@
         </div>
 
         <input 
-            name="input_regexTextField" 
+            id="regexTextField" 
             type="text" 
             class="input-field" 
             placeholder="Enter regex pattern..."
         />
-        <button name="input_findMatchesButton" class="button">Find matches</button>
+        <button id="findMatchesButton" class="button">Find matches</button>
         <div class="checkbox-container">
             <label for="colorize">Colorize matches</label>
             <input 
-                id="colorize"
-                name="input_colorizeSubMatch" 
+                id="colorizeSubMatch" 
                 type="checkbox"
             >
         </div>
     </div>
 
-    <p name="p_errorMessage" class="error-message">Invalid regular expression</p>
+    <p id="errorMessage" class="error-message">Invalid regular expression</p>
 
-    <div class="link-container">
-        <div>Link to this query:</div>
-        <a name="a_linkToQuery"></a>
-    </div>
 
     <hr/>
 
     <div class="results-container">
         <span>Number of matches: </span>
-        <span name="span_numberOfMatches">0</span>
-        <ol name="ol_matches"></ol>
+        <span id="numberOfMatches">0</span>
+        <div id="matchWarning" class="match-warning" style="display: none">
+            <p>Showing all <span id="totalMatchCount"></span> matches may cause the page to load slowly.</p>
+            <button id="limitMatches" class="button button-secondary">Show only first 5,000 matches</button>
+            <button id="showAll" class="button button-secondary">Show all matches anyway</button>
+        </div>
+        <ol id="matches"></ol>
     </div>
-
+    <div class="link-container">
+        <div>Link to this query:</div>
+        <a id="linkToQuery"></a>
+    </div>
     <script src="words.txt" type="text/plain"></script>
     <script src="app.js"></script>
 </body>

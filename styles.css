@@ -175,4 +175,36 @@ li {
         min-width: 260px;
         flex-shrink: 0;
     }
+}
+
+.match-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 4px;
+}
+
+.match-warning p {
+    margin: 0 0 12px 0;
+}
+
+.button-secondary {
+    background-color: #6c757d;
+    margin-right: 8px;
+}
+
+.button-secondary:hover {
+    background-color: #5a6268;
+}
+
+.load-more-btn {
+    display: block;
+    margin: 20px auto;
+    background-color: #6c757d;
+}
+
+.load-more-btn:hover {
+    background-color: #5a6268;
 } 
