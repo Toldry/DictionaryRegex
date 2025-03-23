@@ -295,4 +295,191 @@ describe('DictionaryRegex - URL Hash Initialization', () => {
         expect(dictionaryRegex.elements.matchCount.textContent).toBe('0');
         expect(dictionaryRegex.elements.matchesList.children).toHaveLength(0);
     });
+});
+
+describe('DictionaryRegex - Example Queries', () => {
+    let dictionaryRegex;
+    
+    beforeEach(() => {
+        document.body.innerHTML = `
+            <input id="regexTextField" type="text">
+            <button id="findMatchesButton">Find Matches</button>
+            <input id="colorizeSubMatch" type="checkbox">
+            <ul id="matches"></ul>
+            <div id="numberOfMatches">0</div>
+            <div id="errorMessage" style="display: none;"></div>
+            <a id="linkToQuery"></a>
+            <div class="examples-container">
+                <div class="example-queries"></div>
+            </div>
+            <template id="exampleQueryTemplate">
+                <a href="#" class="example-query">
+                    <div class="description" data-en="" data-he=""></div>
+                    <div class="pattern"></div>
+                </a>
+            </template>
+            <div id="matchWarning" style="display: none;">
+                <span id="totalMatchCount"></span>
+                <button id="limitMatches">Show First 5000</button>
+                <button id="showAll">Show All</button>
+            </div>
+        `;
+
+        // Mock dictionary with test words
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                ok: true,
+                text: () => Promise.resolve('word1\nword2\nword3')
+            })
+        );
+        
+        dictionaryRegex = new DictionaryRegex();
+    });
+
+    test('should initialize example queries', () => {
+        const container = document.querySelector('.example-queries');
+        const exampleQueries = container.querySelectorAll('.example-query');
+        
+        expect(exampleQueries.length).toBe(5); // We have 5 example queries
+        expect(exampleQueries[0].querySelector('.pattern').textContent).toBe('astic$');
+    });
+
+    test('should handle example query clicks correctly', async () => {
+        await dictionaryRegex.loadWords();
+        
+        // Find the first example query
+        const exampleQuery = document.querySelector('.example-query');
+        
+        // Simulate click
+        const clickEvent = { preventDefault: jest.fn() };
+        exampleQuery.click(clickEvent);
+        
+        // Verify input was updated
+        expect(dictionaryRegex.elements.input.value).toBe('astic$');
+        
+        // Verify search was performed
+        expect(dictionaryRegex.elements.matchesList.innerHTML).toBe('');
+    });
+});
+
+describe('DictionaryRegex - Language Support', () => {
+    let dictionaryRegex;
+    
+    beforeEach(() => {
+        document.body.innerHTML = `
+            <input id="regexTextField" type="text" data-en-placeholder="Enter regex pattern..." data-he-placeholder="הכנס ביטוי רגולרי...">
+            <button id="findMatchesButton" data-en="Find matches" data-he="מצא התאמות">Find matches</button>
+            <input id="colorizeSubMatch" type="checkbox">
+            <ul id="matches"></ul>
+            <div id="numberOfMatches">0</div>
+            <div id="errorMessage" style="display: none;" data-en="Invalid regular expression" data-he="ביטוי רגולרי לא תקין"></div>
+            <a id="linkToQuery"></a>
+            <div class="examples-container">
+                <div class="example-queries"></div>
+            </div>
+            <template id="exampleQueryTemplate">
+                <a href="#" class="example-query">
+                    <div class="description" data-en="" data-he=""></div>
+                    <div class="pattern"></div>
+                </a>
+            </template>
+            <div id="matchWarning" style="display: none;">
+                <span id="totalMatchCount"></span>
+                <button id="limitMatches" data-en="Show only first 5,000 matches" data-he="הצג רק 5,000 התאמות ראשונות">Show First 5000</button>
+                <button id="showAll" data-en="Show all matches anyway" data-he="הצג את כל ההתאמות בכל מקרה">Show All</button>
+            </div>
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
+        `;
+
+        // Mock dictionary with test words
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                ok: true,
+                text: () => Promise.resolve('word1\nword2\nword3')
+            })
+        );
+        
+        dictionaryRegex = new DictionaryRegex();
+    });
+
+    test('should initialize with correct language from URL', () => {
+        // Test default language
+        expect(dictionaryRegex.currentLanguage).toBe('en');
+        
+        // Test Hebrew language from URL
+        const mockLocation = new URL('http://localhost?lang=he');
+        delete window.location;
+        window.location = mockLocation;
+        
+        dictionaryRegex = new DictionaryRegex();
+        expect(dictionaryRegex.currentLanguage).toBe('he');
+    });
+
+    test('should update UI language when language changes', async () => {
+        // Change to Hebrew
+        dictionaryRegex.currentLanguage = 'he';
+        dictionaryRegex.updateUILanguage();
+        
+        // Verify UI elements were updated
+        expect(dictionaryRegex.elements.input.placeholder).toBe('הכנס ביטוי רגולרי...');
+        expect(dictionaryRegex.elements.searchButton.textContent).toBe('מצא התאמות');
+        expect(document.documentElement.dir).toBe('rtl');
+        
+        // Change back to English
+        dictionaryRegex.currentLanguage = 'en';
+        dictionaryRegex.updateUILanguage();
+        
+        // Verify UI elements were updated back
+        expect(dictionaryRegex.elements.input.placeholder).toBe('Enter regex pattern...');
+        expect(dictionaryRegex.elements.searchButton.textContent).toBe('Find matches');
+        expect(document.documentElement.dir).toBe('ltr');
+    });
+
+    test('should load correct dictionary file when language changes', async () => {
+        // Change to Hebrew
+        dictionaryRegex.currentLanguage = 'he';
+        await dictionaryRegex.loadWords();
+        expect(global.fetch).toHaveBeenCalledWith('hebrew_words.txt');
+        
+        // Change back to English
+        dictionaryRegex.currentLanguage = 'en';
+        await dictionaryRegex.loadWords();
+        expect(global.fetch).toHaveBeenCalledWith('words.txt');
+    });
+
+    test('should update URL when language changes', () => {
+        // Test initial URL
+        expect(window.location.href).toBe('http://localhost');
+        
+        // Change language
+        dictionaryRegex.currentLanguage = 'he';
+        dictionaryRegex.updateUrlWithLanguage();
+        
+        // Verify URL was updated
+        expect(window.location.href).toBe('http://localhost/?lang=he');
+        
+        // Change back to English
+        dictionaryRegex.currentLanguage = 'en';
+        dictionaryRegex.updateUrlWithLanguage();
+        
+        // Verify URL was updated back
+        expect(window.location.href).toBe('http://localhost&lang=en');
+    });
+
+    test('should maintain search results when language changes', async () => {
+        // Set up initial search
+        await dictionaryRegex.loadWords();
+        dictionaryRegex.elements.input.value = 'test';
+        dictionaryRegex.performSearch();
+        
+        // Change language
+        dictionaryRegex.currentLanguage = 'he';
+        await dictionaryRegex.handleLanguageChange();
+        
+        // Verify search was performed again
+        expect(dictionaryRegex.elements.matchesList.innerHTML).toBe('');
+    });
 }); 

@@ -3,37 +3,31 @@
 <head>
     <title>Dictionary Regex</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 	<link rel="shortcut icon" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="language-selector">
+        <select id="languageSelect" class="language-select">
+            <option value="en">English</option>
+            <option value="he">עברית</option>
+        </select>
+    </div>
+
     <div class="input-container">
-        <h3>Dictionary Regex</h3>
-        <p>Enter a regular expression to search the Oxford English Dictionary</p>
+        <h3 data-en="Dictionary Regex" data-he="מילון Regex"></h3>
+        <p data-en="Enter a regular expression to search the Oxford English Dictionary" data-he="הכנס ביטוי רגולרי לחיפוש במילון העברי"></p>
         
         <div class="examples-container">
-            <h4>Example Queries</h4>
+            <h4 data-en="Example Queries" data-he="דוגמאות לחיפושים"></h4>
             <div class="example-queries">
-                <a href="#astic$" class="example-query">
-                    <div class="description">Words ending in "astic"</div>
-                    <div class="pattern">astic$</div>
-                </a>
-                <a href="#^.{4}ing$" class="example-query">
-                    <div class="description">4-letter words ending in "ing"</div>
-                    <div class="pattern">^.{4}ing$</div>
-                </a>
-                <a href="#^(.+)\1$" class="example-query">
-                    <div class="description">Words that are repeated (like 'murmur')</div>
-                    <div class="pattern">^(.+)\1$</div>
-                </a>
-                <a href="#(.)\1(.)\2(.)\3" class="example-query">
-                    <div class="description">Words with three consecutive pairs of repeated letters</div>
-                    <div class="pattern">(.)\1(.)\2(.)\3</div>
-                </a>
-                <a href="#^(.)(.)(.).\3\2\1$" class="example-query">
-                    <div class="description">7-letter palindromes</div>
-                    <div class="pattern">^(.)(.)(.).\3\2\1$</div>
-                </a>
+                <template id="exampleQueryTemplate">
+                    <a href="#" class="example-query">
+                        <div class="description" data-en="" data-he=""></div>
+                        <div class="pattern"></div>
+                    </a>
+                </template>
             </div>
         </div>
 
@@ -41,11 +35,12 @@
             id="regexTextField" 
             type="text" 
             class="input-field" 
-            placeholder="Enter regex pattern..."
+            data-en-placeholder="Enter regex pattern..."
+            data-he-placeholder="הכנס ביטוי רגולרי..."
         />
-        <button id="findMatchesButton" class="button">Find matches</button>
+        <button id="findMatchesButton" class="button" data-en="Find matches" data-he="מצא התאמות"></button>
         <div class="checkbox-container">
-            <label for="colorize">Colorize matches</label>
+            <label for="colorize" data-en="Colorize matches" data-he="צבע התאמות"></label>
             <input 
                 id="colorizeSubMatch" 
                 type="checkbox"
@@ -53,26 +48,30 @@
         </div>
     </div>
 
-    <p id="errorMessage" class="error-message">Invalid regular expression</p>
-
+    <p id="errorMessage" class="error-message" data-en="Invalid regular expression" data-he="ביטוי רגולרי לא תקין"></p>
 
     <hr/>
 
     <div class="results-container">
-        <span>Number of matches: </span>
+        <span data-en="Number of matches: " data-he="מספר התאמות: "></span>
         <span id="numberOfMatches">0</span>
         <div id="matchWarning" class="match-warning" style="display: none">
-            <p>Showing all <span id="totalMatchCount"></span> matches may cause the page to load slowly.</p>
-            <button id="limitMatches" class="button button-secondary">Show only first 5,000 matches</button>
-            <button id="showAll" class="button button-secondary">Show all matches anyway</button>
+            <p>
+                <span data-en="Showing all " data-he="הצגת כל "></span>
+                <span id="totalMatchCount"></span>
+                <span data-en=" matches may cause the page to load slowly." data-he=" התאמות עלולה לגרום לטעינה איטית של הדף."></span>
+            </p>
+            <button id="limitMatches" class="button button-secondary" data-en="Show only first 5,000 matches" data-he="הצג רק 5,000 התאמות ראשונות"></button>
+            <button id="showAll" class="button button-secondary" data-en="Show all matches anyway" data-he="הצג את כל ההתאמות בכל מקרה"></button>
         </div>
         <ol id="matches"></ol>
     </div>
     <div class="link-container">
-        <div>Link to this query:</div>
+        <div data-en="Link to this query:" data-he="קישור לחיפוש זה:"></div>
         <a id="linkToQuery"></a>
     </div>
-    <script src="words.txt" type="text/plain"></script>
+    <script src="words.txt" type="text/plain" id="wordsFile"></script>
+    <script src="hebrew_words.txt" type="text/plain" id="hebrewWordsFile"></script>
     <script src="app.js"></script>
 </body>
 </html>

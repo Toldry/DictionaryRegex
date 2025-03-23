@@ -207,4 +207,55 @@ li {
 
 .load-more-btn:hover {
     background-color: #5a6268;
+}
+
+/* Language selector */
+.language-selector {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: #f8f9fa;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.language-select {
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+.language-select:hover {
+    border-color: #adb5bd;
+}
+
+/* RTL support */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .language-selector {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+[dir="rtl"] .example-queries {
+    direction: rtl;
+}
+
+[dir="rtl"] ol {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+[dir="rtl"] .checkbox-container {
+    flex-direction: row-reverse;
 } 

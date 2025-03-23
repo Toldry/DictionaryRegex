@@ -7,6 +7,7 @@ class DictionaryRegex {
         this.words = [];
         this.currentMatches = [];
         this.MATCH_LIMIT = 5000;
+        this.currentLanguage = this.getLanguageFromUrl() || 'en';
         
         this.elements = {
             input: document.getElementById('regexTextField'),
@@ -22,7 +23,8 @@ class DictionaryRegex {
             totalMatchCount: document.getElementById('totalMatchCount'),
             limitMatchesBtn: document.getElementById('limitMatches'),
             showAllBtn: document.getElementById('showAll'),
-            loadMoreBtn: document.createElement('button')
+            loadMoreBtn: document.createElement('button'),
+            languageSelect: document.getElementById('languageSelect')
         };
 
         // Initialize query link with current URL
@@ -30,13 +32,34 @@ class DictionaryRegex {
         this.elements.queryLink.href = baseUrl;
         this.elements.queryLink.textContent = baseUrl;
         
+        // Set initial language UI state
+        if (this.elements.languageSelect) {
+            this.elements.languageSelect.value = this.currentLanguage;
+        }
+        document.documentElement.dir = this.currentLanguage === 'he' ? 'rtl' : 'ltr';
+        this.updateUILanguage();
+        
         this.initializeEventListeners();
+        this.initializeExampleQueries();
         this.initialize();
+    }
+
+    getLanguageFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang');
+        return lang;
+    }
+
+    updateUrlWithLanguage() {
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set('lang', this.currentLanguage);
+        window.history.pushState({}, '', newUrl);
     }
 
     async loadWords() {
         try {
-            const response = await fetch('words.txt');
+            const file = this.currentLanguage === 'en' ? 'words.txt' : 'hebrew_words.txt';
+            const response = await fetch(file);
             if (!response.ok) throw new Error('Failed to load dictionary');
             const text = await response.text();
             this.words = text.split('\n').map(word => word.replace(/\r$/, ''));
@@ -55,6 +78,11 @@ class DictionaryRegex {
             link.addEventListener('click', (e) => this.handleExampleClick(e));
         });
 
+        // Language switching - only if the selector exists
+        if (this.elements.languageSelect) {
+            this.elements.languageSelect.addEventListener('change', () => this.handleLanguageChange());
+        }
+
         // Mobile scroll behavior
         if (window.innerWidth <= 600) {
             this.initializeHorizontalScroll();
@@ -69,6 +97,50 @@ class DictionaryRegex {
         this.elements.showAllBtn.addEventListener('click', () => {
             this.displayResults(this.currentMatches, false);
             this.elements.matchWarning.style.display = 'none';
+        });
+    }
+
+    handleLanguageChange() {
+        if (!this.elements.languageSelect) return;
+        
+        this.currentLanguage = this.elements.languageSelect.value;
+        document.documentElement.dir = this.currentLanguage === 'he' ? 'rtl' : 'ltr';
+        this.updateUILanguage();
+        this.updateUrlWithLanguage();
+        this.loadWords().then(() => {
+            // If there's a current search, perform it again with the new dictionary
+            if (this.elements.input.value) {
+                this.performSearch();
+            }
+        });
+    }
+
+    updateUILanguage() {
+        // Update document direction
+        document.documentElement.dir = this.currentLanguage === 'he' ? 'rtl' : 'ltr';
+        
+        // Update all elements with data attributes
+        document.querySelectorAll('[data-en]').forEach(element => {
+            const text = element.getAttribute(`data-${this.currentLanguage}`);
+            if (text) {
+                element.textContent = text;
+            }
+        });
+
+        // Update placeholders
+        document.querySelectorAll('[data-en-placeholder]').forEach(element => {
+            const placeholder = element.getAttribute(`data-${this.currentLanguage}-placeholder`);
+            if (placeholder) {
+                element.placeholder = placeholder;
+            }
+        });
+
+        // Update example query descriptions
+        document.querySelectorAll('.example-query .description').forEach(description => {
+            const text = description.getAttribute(`data-${this.currentLanguage}`);
+            if (text) {
+                description.textContent = text;
+            }
         });
     }
 
@@ -314,9 +386,13 @@ class DictionaryRegex {
     }
 
     updateQueryLink(pattern) {
-        const hash = '#' + encodeURIComponent(pattern);
-        this.elements.queryLink.href = hash;
-        this.elements.queryLink.textContent = window.location.href.split('#')[0] + hash;
+        const url = new URL(window.location.href);
+        url.hash = '#' + encodeURIComponent(pattern);
+        if (this.currentLanguage === 'he') {
+            url.searchParams.set('lang', 'he');
+        }
+        this.elements.queryLink.href = url.toString();
+        this.elements.queryLink.textContent = url.toString();
     }
 
     async initializeFromHash() {
@@ -334,6 +410,70 @@ class DictionaryRegex {
     async initialize() {
         await this.loadWords();
         this.initializeFromHash();
+    }
+
+    initializeExampleQueries() {
+        const template = document.getElementById('exampleQueryTemplate');
+        if (!template) return; // Skip initialization if template doesn't exist
+
+        const examples = [
+            {
+                pattern: 'astic$',
+                description: {
+                    en: 'Words ending in "astic"',
+                    he: 'מילים שמסתיימות ב"astic"'
+                }
+            },
+            {
+                pattern: '^.{4}ing$',
+                description: {
+                    en: '4-letter words ending in "ing"',
+                    he: 'מילים באורך 4 אותיות שמסתיימות ב"ing"'
+                }
+            },
+            {
+                pattern: '^(.+)\\1$',
+                description: {
+                    en: 'Words that are repeated (like \'murmur\')',
+                    he: 'מילים שחוזרות על עצמן'
+                }
+            },
+            {
+                pattern: '(.)\\1(.)\\2(.)\\3',
+                description: {
+                    en: 'Words with three consecutive pairs of repeated letters',
+                    he: 'מילים עם שלושה זוגות אותיות חוזרות ברצף'
+                }
+            },
+            {
+                pattern: '^(.)(.)(.).\\3\\2\\1$',
+                description: {
+                    en: '7-letter palindromes',
+                    he: 'פלינדרומים באורך 7 אותיות'
+                }
+            }
+        ];
+
+        const container = document.querySelector('.example-queries');
+        if (!container) return; // Skip if container doesn't exist
+        
+        examples.forEach(example => {
+            const clone = template.content.cloneNode(true);
+            const link = clone.querySelector('.example-query');
+            const description = clone.querySelector('.description');
+            const pattern = clone.querySelector('.pattern');
+            
+            link.href = '#' + example.pattern;
+            description.setAttribute('data-en', example.description.en);
+            description.setAttribute('data-he', example.description.he);
+            description.textContent = example.description.en;
+            pattern.textContent = example.pattern;
+            
+            // Add click event listener directly to the link
+            link.addEventListener('click', (e) => this.handleExampleClick(e));
+            
+            container.appendChild(clone);
+        });
     }
 }
 
