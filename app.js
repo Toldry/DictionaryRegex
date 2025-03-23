@@ -334,3 +334,8 @@ class DictionaryRegex {
 document.addEventListener('DOMContentLoaded', () => {
     window.dictionaryRegex = new DictionaryRegex();
 });
+
+// At the very end of the file, after the DOMContentLoaded event listener
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = DictionaryRegex;
+}
