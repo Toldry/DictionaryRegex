@@ -44,3 +44,14 @@ npm test
 # Run tests in watch mode
 npm run test:watch
 ```
+
+
+# Sources
+English words:
+https://raw.githubusercontent.com/words/an-array-of-english-words/refs/heads/master/index.json
+
+Spanish words:
+https://raw.githubusercontent.com/words/an-array-of-spanish-words/refs/heads/master/index.json
+
+Hebrew words:
+https://he.wiktionary.org

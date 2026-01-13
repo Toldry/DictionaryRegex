@@ -58,7 +58,14 @@ class DictionaryRegex {
 
     async loadWords() {
         try {
-            const file = this.currentLanguage === 'en' ? 'words.txt' : 'hebrew_words.txt';
+            let file;
+            if (this.currentLanguage === 'en') {
+                file = 'english_words.txt';
+            } else if (this.currentLanguage === 'he') {
+                file = 'hebrew_words.txt';
+            } else if (this.currentLanguage === 'es') {
+                file = 'spanish_words.txt';
+            }
             const response = await fetch(file);
             if (!response.ok) throw new Error('Failed to load dictionary');
             const text = await response.text();
@@ -102,11 +109,12 @@ class DictionaryRegex {
 
     handleLanguageChange() {
         if (!this.elements.languageSelect) return;
-        
+
         this.currentLanguage = this.elements.languageSelect.value;
         document.documentElement.dir = this.currentLanguage === 'he' ? 'rtl' : 'ltr';
         this.updateUILanguage();
         this.updateUrlWithLanguage();
+        this.reinitializeExampleQueries();
         this.loadWords().then(() => {
             // If there's a current search, perform it again with the new dictionary
             if (this.elements.input.value) {
@@ -200,6 +208,17 @@ class DictionaryRegex {
         const hash = e.currentTarget.getAttribute('href').substring(1);
         this.elements.input.value = decodeURIComponent(hash);
         this.performSearch();
+    }
+
+    reinitializeExampleQueries() {
+        const container = document.querySelector('.example-queries');
+        if (!container) return;
+
+        // Remove only the example links, not the template
+        container.querySelectorAll('.example-query').forEach(el => el.remove());
+
+        // Reinitialize with new language examples
+        this.initializeExampleQueries();
     }
 
     performSearch() {
@@ -416,62 +435,93 @@ class DictionaryRegex {
         const template = document.getElementById('exampleQueryTemplate');
         if (!template) return; // Skip initialization if template doesn't exist
 
-        const examples = [
-            {
-                pattern: 'astic$',
-                description: {
-                    en: 'Words ending in "astic"',
-                    he: 'מילים שמסתיימות ב"astic"'
+        const examplesByLanguage = {
+            en: [
+                {
+                    pattern: 'astic$',
+                    description: 'Words ending in "astic"'
+                },
+                {
+                    pattern: '^.{4}ing$',
+                    description: '4-letter words ending in "ing"'
+                },
+                {
+                    pattern: '^(.+)\\1$',
+                    description: 'Words that are repeated (like \'murmur\')'
+                },
+                {
+                    pattern: '(.)\\1(.)\\2(.)\\3',
+                    description: 'Words with three consecutive pairs of repeated letters'
+                },
+                {
+                    pattern: '^(.)(.)(.).\\3\\2\\1$',
+                    description: '7-letter palindromes'
                 }
-            },
-            {
-                pattern: '^.{4}ing$',
-                description: {
-                    en: '4-letter words ending in "ing"',
-                    he: 'מילים באורך 4 אותיות שמסתיימות ב"ing"'
+            ],
+            es: [
+                {
+                    pattern: 'zz',
+                    description: 'Palabras con "zz" (extranjerismos)'
+                },
+                {
+                    pattern: '^[aeiou]+$',
+                    description: 'Palabras que solo tienen vocales'
+                },
+                {
+                    pattern: 'uu',
+                    description: 'Palabras con "uu"'
+                },
+                {
+                    pattern: 'rr.*rr',
+                    description: 'Palabras con dos "rr"'
+                },
+                {
+                    pattern: 'll.*ll',
+                    description: 'Palabras con dos "ll"'
                 }
-            },
-            {
-                pattern: '^(.+)\\1$',
-                description: {
-                    en: 'Words that are repeated (like \'murmur\')',
-                    he: 'מילים שחוזרות על עצמן'
+            ],
+            he: [
+                {
+                    pattern: '״',
+                    description: 'מילים עם גרשיים (ראשי תיבות)'
+                },
+                {
+                    pattern: '^.{12}$',
+                    description: 'מילים באורך 12 אותיות'
+                },
+                {
+                    pattern: 'ך$',
+                    description: 'מילים שמסתיימות בכ"ף סופית'
+                },
+                {
+                    pattern: '(..)\\1$',
+                    description: 'מילים שמסתיימות בהכפלה'
+                },
+                {
+                    pattern: '(.)\\1',
+                    description: 'מילים עם אותיות כפולות'
                 }
-            },
-            {
-                pattern: '(.)\\1(.)\\2(.)\\3',
-                description: {
-                    en: 'Words with three consecutive pairs of repeated letters',
-                    he: 'מילים עם שלושה זוגות אותיות חוזרות ברצף'
-                }
-            },
-            {
-                pattern: '^(.)(.)(.).\\3\\2\\1$',
-                description: {
-                    en: '7-letter palindromes',
-                    he: 'פלינדרומים באורך 7 אותיות'
-                }
-            }
-        ];
+            ]
+        };
 
+        const examples = examplesByLanguage[this.currentLanguage] || examplesByLanguage.en;
         const container = document.querySelector('.example-queries');
         if (!container) return; // Skip if container doesn't exist
-        
+
         examples.forEach(example => {
             const clone = template.content.cloneNode(true);
             const link = clone.querySelector('.example-query');
             const description = clone.querySelector('.description');
             const pattern = clone.querySelector('.pattern');
-            
+
             link.href = '#' + example.pattern;
-            description.setAttribute('data-en', example.description.en);
-            description.setAttribute('data-he', example.description.he);
-            description.textContent = example.description.en;
+            description.setAttribute(`data-${this.currentLanguage}`, example.description);
+            description.textContent = example.description;
             pattern.textContent = example.pattern;
-            
+
             // Add click event listener directly to the link
             link.addEventListener('click', (e) => this.handleExampleClick(e));
-            
+
             container.appendChild(clone);
         });
     }

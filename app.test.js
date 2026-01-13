@@ -443,30 +443,48 @@ describe('DictionaryRegex - Language Support', () => {
         dictionaryRegex.currentLanguage = 'he';
         await dictionaryRegex.loadWords();
         expect(global.fetch).toHaveBeenCalledWith('hebrew_words.txt');
-        
+
+        // Change to Spanish
+        dictionaryRegex.currentLanguage = 'es';
+        await dictionaryRegex.loadWords();
+        expect(global.fetch).toHaveBeenCalledWith('spanish_words.txt');
+
         // Change back to English
         dictionaryRegex.currentLanguage = 'en';
         await dictionaryRegex.loadWords();
-        expect(global.fetch).toHaveBeenCalledWith('words.txt');
+        expect(global.fetch).toHaveBeenCalledWith('english_words.txt');
     });
 
     test('should update URL when language changes', () => {
-        // Test initial URL
-        expect(window.location.href).toBe('http://localhost');
-        
-        // Change language
+        // Mock history.pushState
+        const pushStateSpy = jest.spyOn(window.history, 'pushState');
+
+        // Change language to Hebrew
         dictionaryRegex.currentLanguage = 'he';
         dictionaryRegex.updateUrlWithLanguage();
-        
-        // Verify URL was updated
-        expect(window.location.href).toBe('http://localhost/?lang=he');
-        
+
+        // Verify pushState was called with Hebrew
+        expect(pushStateSpy).toHaveBeenCalled();
+        const heCall = pushStateSpy.mock.calls[pushStateSpy.mock.calls.length - 1];
+        expect(String(heCall[2])).toContain('lang=he');
+
         // Change back to English
         dictionaryRegex.currentLanguage = 'en';
         dictionaryRegex.updateUrlWithLanguage();
-        
-        // Verify URL was updated back
-        expect(window.location.href).toBe('http://localhost&lang=en');
+
+        // Verify pushState was called with English
+        const enCall = pushStateSpy.mock.calls[pushStateSpy.mock.calls.length - 1];
+        expect(String(enCall[2])).toContain('lang=en');
+
+        // Change to Spanish
+        dictionaryRegex.currentLanguage = 'es';
+        dictionaryRegex.updateUrlWithLanguage();
+
+        // Verify pushState was called with Spanish
+        const esCall = pushStateSpy.mock.calls[pushStateSpy.mock.calls.length - 1];
+        expect(String(esCall[2])).toContain('lang=es');
+
+        pushStateSpy.mockRestore();
     });
 
     test('should maintain search results when language changes', async () => {
@@ -474,11 +492,11 @@ describe('DictionaryRegex - Language Support', () => {
         await dictionaryRegex.loadWords();
         dictionaryRegex.elements.input.value = 'test';
         dictionaryRegex.performSearch();
-        
+
         // Change language
         dictionaryRegex.currentLanguage = 'he';
         await dictionaryRegex.handleLanguageChange();
-        
+
         // Verify search was performed again
         expect(dictionaryRegex.elements.matchesList.innerHTML).toBe('');
     });
