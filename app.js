@@ -468,7 +468,7 @@ class DictionaryRegex {
                     description: 'Palabras que solo tienen vocales'
                 },
                 {
-                    pattern: '^(?=.*a)(?=.*e)(?=.*i)(?=.*o)(?=.*(?<![qg])u)(?!(.*[aeiou].*){6,})\w+$',
+                    pattern: String.raw`^(?=.*a)(?=.*e)(?=.*i)(?=.*o)(?=.*(?<![qg])u)(?!(.*[aeiou].*){6,})\w+$`,
                     description: 'Palabras que tienen cada vocal una vez'
                 },
                 {
