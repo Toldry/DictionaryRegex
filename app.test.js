@@ -5,6 +5,7 @@ describe('DictionaryRegex', () => {
     
     // Mock DOM elements
     beforeEach(() => {
+        window.history.pushState({}, '', 'http://localhost/');
         document.body.innerHTML = `
             <input id="regexTextField" type="text">
             <button id="findMatchesButton">Find Matches</button>
@@ -18,7 +19,7 @@ describe('DictionaryRegex', () => {
             </div>
             <div id="matchWarning" style="display: none;">
                 <span id="totalMatchCount"></span>
-                <button id="limitMatches">Show First 5000</button>
+                <button id="limitMatches">Show First 2000</button>
                 <button id="showAll">Show All</button>
             </div>
         `;
@@ -35,6 +36,7 @@ describe('DictionaryRegex', () => {
     });
 
     afterEach(() => {
+        window.history.pushState({}, '', 'http://localhost/');
         jest.clearAllMocks();
     });
 
@@ -71,12 +73,65 @@ describe('DictionaryRegex', () => {
         expect(dictionaryRegex.elements.queryLink.textContent).toBe(baseUrl);
     });
 
-    test('should update query link when performing search', async () => {
+    test('should update query link and browser URL when performing search', async () => {
+        const pushStateSpy = jest.spyOn(window.history, 'pushState');
         await dictionaryRegex.loadWords();
         const searchPattern = 'test-pattern';
         dictionaryRegex.elements.input.value = searchPattern;
         await dictionaryRegex.performSearch();
         expect(dictionaryRegex.elements.queryLink.href).toContain(encodeURIComponent(searchPattern));
+        expect(pushStateSpy).toHaveBeenCalled();
+        const lastCall = pushStateSpy.mock.calls[pushStateSpy.mock.calls.length - 1];
+        expect(String(lastCall[2])).toContain(encodeURIComponent(searchPattern));
+        pushStateSpy.mockRestore();
+    });
+
+    test('should trigger search when Enter key is pressed in input', async () => {
+        await dictionaryRegex.loadWords();
+        dictionaryRegex.elements.input.value = 'word1';
+        
+        const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+        dictionaryRegex.elements.input.dispatchEvent(enterEvent);
+
+        expect(dictionaryRegex.currentMatches).toHaveLength(1);
+        expect(dictionaryRegex.currentMatches[0]).toBe('word1');
+    });
+
+    test('should show error message for invalid regular expressions', async () => {
+        await dictionaryRegex.loadWords();
+        dictionaryRegex.elements.input.value = '[invalid';
+        dictionaryRegex.performSearch();
+
+        expect(dictionaryRegex.elements.errorMessage.style.display).toBe('block');
+        expect(dictionaryRegex.elements.errorMessage.textContent).toBe('Invalid regular expression');
+    });
+
+    test('should find and format colorized matches when checkbox is enabled', async () => {
+        await dictionaryRegex.loadWords();
+        dictionaryRegex.elements.colorizeCheckbox.checked = true;
+        dictionaryRegex.elements.input.value = 'ord1';
+        await dictionaryRegex.performSearch();
+
+        expect(dictionaryRegex.currentMatches).toHaveLength(1);
+        expect(dictionaryRegex.currentMatches[0].source).toBe('word1');
+        expect(dictionaryRegex.currentMatches[0].subMatches[0]).toEqual({
+            startIndex: 1,
+            endIndex: 5
+        });
+    });
+
+    test('should handle worker SEARCH_RESULTS message', () => {
+        dictionaryRegex.searchId = 5;
+        dictionaryRegex.handleWorkerMessage({
+            data: {
+                type: 'SEARCH_RESULTS',
+                id: 5,
+                matches: ['word1', 'word2']
+            }
+        });
+
+        expect(dictionaryRegex.currentMatches).toEqual(['word1', 'word2']);
+        expect(dictionaryRegex.elements.matchCount.textContent).toBe('2');
     });
 
     test('should clear warning messages when showing results under limit', async () => {
@@ -119,7 +174,7 @@ describe('DictionaryRegex - Handling Large Result Sets', () => {
             <a id="linkToQuery"></a>
             <div id="matchWarning" style="display: none;">
                 <span id="totalMatchCount"></span>
-                <button id="limitMatches">Show First 5000</button>
+                <button id="limitMatches">Show First 2000</button>
                 <button id="showAll">Show All</button>
             </div>
         `;
@@ -137,14 +192,14 @@ describe('DictionaryRegex - Handling Large Result Sets', () => {
         expect(dictionaryRegex.elements.totalMatchCount.textContent).toBe('6,000');
     });
 
-    test('should automatically load first 5000 matches when exceeding limit', async () => {
+    test('should automatically load first 2000 matches when exceeding limit', async () => {
         await dictionaryRegex.loadWords();
         dictionaryRegex.elements.input.value = 'word';
         await dictionaryRegex.performSearch();
 
         const displayedMatches = dictionaryRegex.elements.matchesList.children.length;
         expect(displayedMatches).toBe(dictionaryRegex.MATCH_LIMIT);
-        expect(dictionaryRegex.elements.matchCount.textContent).toBe('5,000 of 6,000');
+        expect(dictionaryRegex.elements.matchCount.textContent).toBe('2,000 of 6,000');
     });
 
     test('should show load more button when matches exceed limit', async () => {
@@ -154,7 +209,7 @@ describe('DictionaryRegex - Handling Large Result Sets', () => {
 
         const loadMoreBtn = document.querySelector('.load-more-btn');
         expect(loadMoreBtn).not.toBeNull();
-        expect(loadMoreBtn.textContent).toBe('Load 1,000 more matches');
+        expect(loadMoreBtn.textContent).toBe('Load 4,000 more matches');
     });
 
     test('should load all matches when "Show All" button is clicked', async () => {
@@ -170,7 +225,7 @@ describe('DictionaryRegex - Handling Large Result Sets', () => {
         expect(dictionaryRegex.elements.matchWarning.style.display).toBe('none');
     });
 
-    test('should maintain limit when "Show First 5000" button is clicked', async () => {
+    test('should maintain limit when "Show First 2000" button is clicked', async () => {
         await dictionaryRegex.loadWords();
         dictionaryRegex.elements.input.value = 'word';
         await dictionaryRegex.performSearch();
@@ -178,8 +233,8 @@ describe('DictionaryRegex - Handling Large Result Sets', () => {
         const limitMatchesBtn = dictionaryRegex.elements.limitMatchesBtn;
         limitMatchesBtn.click();
 
-        expect(dictionaryRegex.elements.matchesList.children.length).toBe(5000);
-        expect(dictionaryRegex.elements.matchCount.textContent).toBe('5,000 of 6,000');
+        expect(dictionaryRegex.elements.matchesList.children.length).toBe(2000);
+        expect(dictionaryRegex.elements.matchCount.textContent).toBe('2,000 of 6,000');
         expect(dictionaryRegex.elements.matchWarning.style.display).toBe('none');
     });
 
@@ -235,7 +290,7 @@ describe('DictionaryRegex - URL Hash Initialization', () => {
             <a id="linkToQuery"></a>
             <div id="matchWarning" style="display: none;">
                 <span id="totalMatchCount"></span>
-                <button id="limitMatches">Show First 5000</button>
+                <button id="limitMatches">Show First 2000</button>
                 <button id="showAll">Show All</button>
             </div>
         `;
@@ -320,7 +375,7 @@ describe('DictionaryRegex - Example Queries', () => {
             </template>
             <div id="matchWarning" style="display: none;">
                 <span id="totalMatchCount"></span>
-                <button id="limitMatches">Show First 5000</button>
+                <button id="limitMatches">Show First 2000</button>
                 <button id="showAll">Show All</button>
             </div>
         `;
@@ -385,12 +440,22 @@ describe('DictionaryRegex - Language Support', () => {
             </template>
             <div id="matchWarning" style="display: none;">
                 <span id="totalMatchCount"></span>
-                <button id="limitMatches" data-en="Show only first 5,000 matches" data-he="הצג רק 5,000 התאמות ראשונות">Show First 5000</button>
+                <button id="limitMatches" data-en="Show only first 2,000 matches" data-he="הצג רק 2,000 התאמות ראשונות">Show First 2000</button>
                 <button id="showAll" data-en="Show all matches anyway" data-he="הצג את כל ההתאמות בכל מקרה">Show All</button>
             </div>
+            <aside class="sidebar">
+                <ul class="language-list">
+                    <li><a href="?lang=en" class="language-link active" data-lang-code="en">English</a></li>
+                    <li><a href="?lang=he" class="language-link" data-lang-code="he">עברית</a></li>
+                    <li><a href="?lang=es" class="language-link" data-lang-code="es">Español</a></li>
+                    <li><a href="?lang=de" class="language-link" data-lang-code="de">Deutsch</a></li>
+                </ul>
+            </aside>
             <select id="languageSelect">
                 <option value="en">English</option>
                 <option value="he">עברית</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
             </select>
         `;
 
@@ -403,6 +468,11 @@ describe('DictionaryRegex - Language Support', () => {
         );
         
         dictionaryRegex = new DictionaryRegex();
+    });
+
+    afterEach(() => {
+        delete window.location;
+        window.location = new URL('http://localhost');
     });
 
     test('should initialize with correct language from URL', () => {
@@ -436,6 +506,23 @@ describe('DictionaryRegex - Language Support', () => {
         expect(dictionaryRegex.elements.input.placeholder).toBe('Enter regex pattern...');
         expect(dictionaryRegex.elements.searchButton.textContent).toBe('Find matches');
         expect(document.documentElement.dir).toBe('ltr');
+    });
+
+    test('should switch language and update active class when sidebar language link is clicked', async () => {
+        const hebrewLink = document.querySelector('.language-link[data-lang-code="he"]');
+        const englishLink = document.querySelector('.language-link[data-lang-code="en"]');
+        
+        expect(englishLink.classList.contains('active')).toBe(true);
+        expect(hebrewLink.classList.contains('active')).toBe(false);
+
+        // Click Hebrew link
+        hebrewLink.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(dictionaryRegex.currentLanguage).toBe('he');
+        expect(hebrewLink.classList.contains('active')).toBe(true);
+        expect(englishLink.classList.contains('active')).toBe(false);
+        expect(document.documentElement.dir).toBe('rtl');
     });
 
     test('should load correct dictionary file when language changes', async () => {

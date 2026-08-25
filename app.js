@@ -6,8 +6,11 @@ class DictionaryRegex {
     constructor() {
         this.words = [];
         this.currentMatches = [];
-        this.MATCH_LIMIT = 5000;
+        this.MATCH_LIMIT = 2000;
         this.currentLanguage = this.getLanguageFromUrl() || 'en';
+        this.searchId = 0;
+        this.worker = null;
+        this.initWorker();
         
         this.elements = {
             input: document.getElementById('regexTextField'),
@@ -33,15 +36,63 @@ class DictionaryRegex {
         this.elements.queryLink.textContent = baseUrl;
         
         // Set initial language UI state
-        if (this.elements.languageSelect) {
-            this.elements.languageSelect.value = this.currentLanguage;
-        }
+        this.updateLanguageUIState();
         document.documentElement.dir = this.currentLanguage === 'he' ? 'rtl' : 'ltr';
         this.updateUILanguage();
         
         this.initializeEventListeners();
         this.initializeExampleQueries();
         this.initialize();
+    }
+
+    initWorker() {
+        if (typeof Worker !== 'undefined') {
+            try {
+                this.worker = new Worker('worker.js');
+                this.worker.onmessage = (e) => this.handleWorkerMessage(e);
+            } catch (err) {
+                console.warn('Web Worker initialization failed, using main thread fallback:', err);
+                this.worker = null;
+            }
+        }
+    }
+
+    handleWorkerMessage(e) {
+        const data = e.data;
+        if (!data) return;
+
+        if (data.type === 'SEARCH_RESULTS') {
+            if (data.id !== this.searchId) return; // Stale search result
+            this.currentMatches = data.matches;
+            const total = data.totalCount;
+            if (total > this.MATCH_LIMIT) {
+                this.showMatchWarning(total);
+                this.displayResults(data.matches, true, total);
+            } else {
+                this.displayResults(data.matches, false, total);
+            }
+        } else if (data.type === 'ALL_MATCHES_RESULTS') {
+            if (data.id !== this.searchId) return;
+            this.currentMatches = data.matches;
+            this.displayResults(data.matches, false, data.totalCount);
+        } else if (data.type === 'SEARCH_ERROR') {
+            if (data.id !== this.searchId) return;
+            this.showError('Invalid regular expression');
+        }
+    }
+
+    updateLanguageUIState() {
+        if (this.elements.languageSelect) {
+            this.elements.languageSelect.value = this.currentLanguage;
+        }
+        document.querySelectorAll('.language-link, [data-lang-code]').forEach(link => {
+            const lang = link.getAttribute('data-lang-code') || link.getAttribute('data-lang');
+            if (lang === this.currentLanguage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
     }
 
     getLanguageFromUrl() {
@@ -68,6 +119,9 @@ class DictionaryRegex {
             } else if (this.currentLanguage === 'de') {
                 file = 'german_words.txt';
             }
+            if (this.worker) {
+                this.worker.postMessage({ type: 'LOAD_WORDS', file });
+            }
             const response = await fetch(file);
             if (!response.ok) throw new Error('Failed to load dictionary');
             const text = await response.text();
@@ -81,13 +135,31 @@ class DictionaryRegex {
     initializeEventListeners() {
         // Search functionality
         this.elements.searchButton.addEventListener('click', () => this.performSearch());
+        if (this.elements.input) {
+            this.elements.input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    this.performSearch();
+                }
+            });
+        }
         
         // Example queries
         this.elements.exampleLinks.forEach(link => {
             link.addEventListener('click', (e) => this.handleExampleClick(e));
         });
 
-        // Language switching - only if the selector exists
+        // Language switching - sidebar links
+        document.querySelectorAll('.language-link, [data-lang-code]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = link.getAttribute('data-lang-code') || link.getAttribute('data-lang');
+                if (lang && lang !== this.currentLanguage) {
+                    this.handleLanguageChange(lang);
+                }
+            });
+        });
+
+        // Language switching - dropdown selector if present
         if (this.elements.languageSelect) {
             this.elements.languageSelect.addEventListener('change', () => this.handleLanguageChange());
         }
@@ -104,22 +176,32 @@ class DictionaryRegex {
         });
 
         this.elements.showAllBtn.addEventListener('click', () => {
-            this.displayResults(this.currentMatches, false);
+            if (this.worker) {
+                this.worker.postMessage({ type: 'GET_ALL_MATCHES', id: this.searchId });
+            } else {
+                this.displayResults(this.currentMatches, false);
+            }
             this.elements.matchWarning.style.display = 'none';
         });
     }
 
-    handleLanguageChange() {
-        if (!this.elements.languageSelect) return;
+    handleLanguageChange(newLang) {
+        if (newLang && typeof newLang === 'string') {
+            this.currentLanguage = newLang;
+        } else if (this.elements.languageSelect) {
+            this.currentLanguage = this.elements.languageSelect.value;
+        } else {
+            return Promise.resolve();
+        }
 
-        this.currentLanguage = this.elements.languageSelect.value;
+        this.updateLanguageUIState();
         document.documentElement.dir = this.currentLanguage === 'he' ? 'rtl' : 'ltr';
         this.updateUILanguage();
         this.updateUrlWithLanguage();
         this.reinitializeExampleQueries();
-        this.loadWords().then(() => {
+        return this.loadWords().then(() => {
             // If there's a current search, perform it again with the new dictionary
-            if (this.elements.input.value) {
+            if (this.elements.input && this.elements.input.value) {
                 this.performSearch();
             }
         });
@@ -231,19 +313,34 @@ class DictionaryRegex {
 
         this.updateQueryLink(pattern);
 
+        // Pre-validate regex syntax
         try {
+            new RegExp(pattern);
+        } catch (error) {
+            this.showError('Invalid regular expression');
+            return;
+        }
+
+        if (this.worker) {
+            const currentSearchId = ++this.searchId;
+            this.worker.postMessage({
+                type: 'SEARCH',
+                id: currentSearchId,
+                pattern,
+                shouldColorize: this.elements.colorizeCheckbox.checked
+            });
+        } else {
+            // Synchronous fallback (e.g. testing / environments without Worker)
             const regex = new RegExp(pattern, 'g');
             this.currentMatches = this.findMatches(regex);
             
             if (this.currentMatches.length > this.MATCH_LIMIT) {
                 this.showMatchWarning(this.currentMatches.length);
-                // Automatically display first 5000 matches
+                // Automatically display first 2000 matches
                 this.displayResults(this.currentMatches, true);
             } else {
                 this.displayResults(this.currentMatches, false);
             }
-        } catch (error) {
-            this.showError('Invalid regular expression');
         }
     }
 
@@ -251,33 +348,49 @@ class DictionaryRegex {
         console.log('Searching for pattern:', regex);
         const matches = [];
         const shouldColorize = this.elements.colorizeCheckbox.checked;
+        const pattern = typeof regex === 'string' ? regex : regex.source;
 
-        for (const word of this.words) {
-            if (!shouldColorize) {
-                if (word.match(regex)) matches.push(word);
-                continue;
+        if (!shouldColorize) {
+            // Fast path: non-global RegExp.test() avoiding intermediate match allocations
+            const testRegex = new RegExp(pattern);
+            for (let i = 0, len = this.words.length; i < len; i++) {
+                const word = this.words[i];
+                if (testRegex.test(word)) {
+                    matches.push(word);
+                }
             }
-
-            const matchInfo = this.findColorizedMatches(word, regex);
-            if (matchInfo) matches.push(matchInfo);
+        } else {
+            const execRegex = new RegExp(pattern, 'g');
+            for (let i = 0, len = this.words.length; i < len; i++) {
+                const word = this.words[i];
+                const matchInfo = this.findColorizedMatches(word, execRegex);
+                if (matchInfo) {
+                    matches.push(matchInfo);
+                }
+            }
         }
 
         return matches;
     }
 
     findColorizedMatches(word, regex) {
+        regex.lastIndex = 0;
         let match = regex.exec(word);
         if (!match) return null;
 
         const matchInfo = {
-            source: match.input,
+            source: word,
             subMatches: [{
                 startIndex: match.index,
                 endIndex: match.index + match[0].length
             }]
         };
 
-        while ((match = regex.exec(word))) {
+        while ((match = regex.exec(word)) !== null) {
+            if (match[0].length === 0) {
+                regex.lastIndex++;
+                continue;
+            }
             matchInfo.subMatches.push({
                 startIndex: match.index,
                 endIndex: match.index + match[0].length
@@ -293,20 +406,21 @@ class DictionaryRegex {
         this.elements.matchCount.textContent = totalMatches.toLocaleString();
     }
 
-    displayResults(matches, isInitialLoad = true) {
+    displayResults(matches, isInitialLoad = true, totalCount = null) {
         this.currentMatches = matches;
-        const initialMatches = isInitialLoad ? 
+        const total = totalCount !== null ? totalCount : matches.length;
+        const initialMatches = (isInitialLoad && matches.length > this.MATCH_LIMIT) ? 
             matches.slice(0, this.MATCH_LIMIT) : 
             matches;
 
         // Hide warning message if matches are under limit
-        if (matches.length <= this.MATCH_LIMIT) {
+        if (total <= this.MATCH_LIMIT) {
             this.elements.matchWarning.style.display = 'none';
         }
 
-        this.elements.matchCount.textContent = matches.length > this.MATCH_LIMIT ?
-            `${initialMatches.length.toLocaleString()} of ${matches.length.toLocaleString()}` :
-            matches.length.toLocaleString();
+        this.elements.matchCount.textContent = total > this.MATCH_LIMIT ?
+            `${initialMatches.length.toLocaleString()} of ${total.toLocaleString()}` :
+            total.toLocaleString();
 
         this.elements.matchesList.innerHTML = '';
 
@@ -322,7 +436,7 @@ class DictionaryRegex {
             this.elements.matchesList.appendChild(li);
         });
 
-        this.updateLoadMoreButton(matches.length);
+        this.updateLoadMoreButton(total);
     }
 
     updateLoadMoreButton(totalMatches) {
@@ -338,19 +452,22 @@ class DictionaryRegex {
             
             this.elements.loadMoreBtn.addEventListener('click', () => {
                 this.elements.loadMoreBtn.remove();
-                
-                this.elements.matchesList.innerHTML = '';
-                this.elements.matchCount.textContent = this.currentMatches.length.toLocaleString();
-                
-                this.currentMatches.forEach(match => {
-                    const li = document.createElement('li');
-                    if (typeof match === 'string') {
-                        li.textContent = match;
-                    } else {
-                        li.appendChild(this.createColorizedMatch(match));
-                    }
-                    this.elements.matchesList.appendChild(li);
-                });
+                if (this.worker) {
+                    this.worker.postMessage({ type: 'GET_ALL_MATCHES', id: this.searchId });
+                } else {
+                    this.elements.matchesList.innerHTML = '';
+                    this.elements.matchCount.textContent = this.currentMatches.length.toLocaleString();
+                    
+                    this.currentMatches.forEach(match => {
+                        const li = document.createElement('li');
+                        if (typeof match === 'string') {
+                            li.textContent = match;
+                        } else {
+                            li.appendChild(this.createColorizedMatch(match));
+                        }
+                        this.elements.matchesList.appendChild(li);
+                    });
+                }
             }, { once: true });
 
             this.elements.matchesList.after(this.elements.loadMoreBtn);
@@ -414,6 +531,9 @@ class DictionaryRegex {
         }
         this.elements.queryLink.href = url.toString();
         this.elements.queryLink.textContent = url.toString();
+        if (window.history && window.history.pushState) {
+            window.history.pushState({}, '', url.toString());
+        }
     }
 
     async initializeFromHash() {

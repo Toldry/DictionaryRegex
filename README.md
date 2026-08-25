@@ -10,31 +10,19 @@ A web-based tool that allows users to search through a list of words using regul
 3. View the matches in the list below
 
 
-## Setup
-
-### Using Python (Option 1)
-
-If you have Python installed (Python 3.x), you can start a simple HTTP server:
-
+## Setup & Local Preview
+ 
+```bash
+# Start local preview server
+npm run preview
+# or
+npm start
+```
+ 
+Alternatively, with Python:
 ```bash
 python -m http.server 8000
 ```
-
-Then visit `http://localhost:8000` in your browser.
-
-### Using Node.js (Option 2)
-
-1. Install a simple static file server:
-```bash
-npm install -g http-server
-```
-
-2. Run the server:
-```bash
-http-server -p 8000
-```
-
-Then visit `http://localhost:8000` in your browser.
 
 ## Run Tests
 ```bash

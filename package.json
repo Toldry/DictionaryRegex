@@ -5,20 +5,26 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "preview": "serve .",
+    "start": "serve .",
+    "dev": "serve ."
   },
   "devDependencies": {
     "@babel/core": "^7.22.0",
     "@babel/preset-env": "^7.22.0",
+    "babel-jest": "^29.5.0",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
-    "babel-jest": "^29.5.0"
+    "serve": "^14.2.4"
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "setupFiles": ["./jest.setup.js"],
+    "setupFiles": [
+      "./jest.setup.js"
+    ],
     "transform": {
       "^.+\\.js$": "babel-jest"
     }
   }
-} 
+}

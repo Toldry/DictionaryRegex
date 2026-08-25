@@ -39,14 +39,11 @@ npm test -- --testNamePattern="Language Support"
 
 ### Local Development / Static Server
 
-Serve the project root with any local static HTTP server:
-
 ```bash
-# Option 1: Python
-python -m http.server 8000
-
-# Option 2: Node.js (http-server or npx serve)
-npx serve .
+# Start local preview server (serves on http://localhost:3000)
+npm run preview
+# or
+npm start
 ```
 Then navigate to `http://localhost:8000`.
 
@@ -60,6 +57,7 @@ Then navigate to `http://localhost:8000`.
 DictionaryRegex/
 ├── index.html            # Main HTML UI with i18n data-* attributes
 ├── app.js                # Core DictionaryRegex class and application logic
+├── worker.js             # Web Worker for non-blocking background regex matching
 ├── app.test.js           # Comprehensive Jest test suite
 ├── styles.css            # Styles, responsive layouts, RTL rules, and animations
 ├── english_words.txt     # English dictionary (109k+ entries)
@@ -76,7 +74,7 @@ DictionaryRegex/
    - `words[]`: Array of loaded words for the active language.
    - `currentMatches[]`: Results matching the current regex query.
    - `currentLanguage`: Active language code (`'en'`, `'he'`, `'es'`, `'de'`). Persisted in the URL via `?lang=...`.
-   - `MATCH_LIMIT`: Threshold (default `5000`) before pagination / match warning kicks in.
+   - `MATCH_LIMIT`: Threshold (default `2000`) before pagination / match warning kicks in.
 
 2. **Search Engine:**
    - `performSearch()`: Parses regex pattern, handles errors/exceptions, invokes search, triggers results rendering.
@@ -102,10 +100,9 @@ To add support for a new language (e.g., French `fr`):
 
 1. **Dictionary File**: Place `<lang>_words.txt` in the root folder (plain text, one word per line, UTF-8).
 2. **HTML Setup (`index.html`)**:
-   - Add `<option value="<lang>">Language Name</option>` to `#languageSelect`.
+   - Add `<li><a href="?lang=<lang>" class="language-link" data-lang-code="<lang>">Language Name</a></li>` to `#languageList`.
    - Add `data-<lang>="..."` translations to all UI elements (`h3`, `p`, `h4`, buttons, labels, spans, error messages).
    - Add `data-<lang>-placeholder="..."` to `#regexTextField`.
-   - Include `<script src="<lang>_words.txt" type="text/plain" id="<lang>WordsFile"></script>`.
 3. **App Logic (`app.js`)**:
    - Update `loadWords()` to map `this.currentLanguage === '<lang>'` to `<lang>_words.txt`.
    - Add example regex queries to `examplesByLanguage.<lang>` in `initializeExampleQueries()`.
@@ -119,4 +116,4 @@ To add support for a new language (e.g., French `fr`):
 
 - Tests use Jest with JSDOM and mock DOM fixtures in `beforeEach()`.
 - Global `fetch` is mocked to return test dictionaries.
-- Ensure all DOM events, URL search param synchronization, and result limits (>5000) are covered.
+- Ensure all DOM events, URL search param synchronization, and result limits (>2000) are covered.
