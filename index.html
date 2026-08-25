@@ -13,15 +13,16 @@
             <option value="en">English</option>
             <option value="he">עברית</option>
             <option value="es">Español</option>
+            <option value="de">Deutsch</option>
         </select>
     </div>
 
     <div class="input-container">
-        <h3 data-en="Dictionary Regex" data-he="מילון Regex" data-es="Diccionario Regex"></h3>
-        <p data-en="Enter a regular expression to search the Oxford English Dictionary" data-he="הכנס ביטוי רגולרי לחיפוש במילון העברי" data-es="Ingresa una expresión regular para buscar en el diccionario de palabras en español"></p>
+        <h3 data-en="Dictionary Regex" data-he="מילון Regex" data-es="Diccionario Regex" data-de="Wörterbuch Regex"></h3>
+        <p data-en="Enter a regular expression to search the Oxford English Dictionary" data-he="הכנס ביטוי רגולרי לחיפוש במילון העברי" data-es="Ingresa una expresión regular para buscar en el diccionario de palabras en español" data-de="Geben Sie einen regulären Ausdruck ein, um im deutschen Wörterbuch zu suchen"></p>
         
         <div class="examples-container">
-            <h4 data-en="Example Queries" data-he="דוגמאות לחיפושים" data-es="Consultas de ejemplo"></h4>
+            <h4 data-en="Example Queries" data-he="דוגמאות לחיפושים" data-es="Consultas de ejemplo" data-de="Beispielabfragen"></h4>
             <div class="example-queries">
                 <template id="exampleQueryTemplate">
                     <a href="#" class="example-query">
@@ -39,10 +40,11 @@
             data-en-placeholder="Enter regex pattern..."
             data-he-placeholder="הכנס ביטוי רגולרי..."
             data-es-placeholder="Ingresa un patrón regex..."
+            data-de-placeholder="Regex-Muster eingeben..."
         />
-        <button id="findMatchesButton" class="button" data-en="Find matches" data-he="מצא התאמות" data-es="Buscar coincidencias"></button>
+        <button id="findMatchesButton" class="button" data-en="Find matches" data-he="מצא התאמות" data-es="Buscar coincidencias" data-de="Treffer suchen"></button>
         <div class="checkbox-container">
-            <label for="colorize" data-en="Colorize matches" data-he="צבע התאמות" data-es="Resaltar coincidencias"></label>
+            <label for="colorizeSubMatch" data-en="Colorize matches" data-he="צבע התאמות" data-es="Resaltar coincidencias" data-de="Treffer hervorheben"></label>
             <input 
                 id="colorizeSubMatch" 
                 type="checkbox"
@@ -50,31 +52,32 @@
         </div>
     </div>
 
-    <p id="errorMessage" class="error-message" data-en="Invalid regular expression" data-he="ביטוי רגולרי לא תקין" data-es="Expresión regular no válida"></p>
+    <p id="errorMessage" class="error-message" data-en="Invalid regular expression" data-he="ביטוי רגולרי לא תקין" data-es="Expresión regular no válida" data-de="Ungültiger regulärer Ausdruck"></p>
 
     <hr/>
 
     <div class="results-container">
-        <span data-en="Number of matches: " data-he="מספר התאמות: " data-es="Número de coincidencias: "></span>
+        <span data-en="Number of matches: " data-he="מספר התאמות: " data-es="Número de coincidencias: " data-de="Anzahl der Treffer: "></span>
         <span id="numberOfMatches">0</span>
         <div id="matchWarning" class="match-warning" style="display: none">
             <p>
-                <span data-en="Showing all " data-he="הצגת כל " data-es="Mostrar todo "></span>
+                <span data-en="Showing all " data-he="הצגת כל " data-es="Mostrar todo " data-de="Das Anzeigen aller "></span>
                 <span id="totalMatchCount"></span>
-                <span data-en=" matches may cause the page to load slowly." data-he=" התאמות עלולה לגרום לטעינה איטית של הדף." data-es=" coincidencias puede hacer que la página se cargue lentamente."></span>
+                <span data-en=" matches may cause the page to load slowly." data-he=" התאמות עלולה לגרום לטעינה איטית של הדף." data-es=" coincidencias puede hacer que la página se cargue lentamente." data-de=" Treffer kann dazu führen, dass die Seite langsam lädt."></span>
             </p>
-            <button id="limitMatches" class="button button-secondary" data-en="Show only first 5,000 matches" data-he="הצג רק 5,000 התאמות ראשונות" data-es="Mostrar solo las primeras 5,000 coincidencias"></button>
-            <button id="showAll" class="button button-secondary" data-en="Show all matches anyway" data-he="הצג את כל ההתאמות בכל מקרה" data-es="Mostrar todas las coincidencias de todas formas"></button>
+            <button id="limitMatches" class="button button-secondary" data-en="Show only first 5,000 matches" data-he="הצג רק 5,000 התאמות ראשונות" data-es="Mostrar solo las primeras 5,000 coincidencias" data-de="Nur die ersten 5.000 Treffer anzeigen"></button>
+            <button id="showAll" class="button button-secondary" data-en="Show all matches anyway" data-he="הצג את כל ההתאמות בכל מקרה" data-es="Mostrar todas las coincidencias de todas formas" data-de="Trotzdem alle Treffer anzeigen"></button>
         </div>
         <ol id="matches"></ol>
     </div>
     <div class="link-container">
-        <div data-en="Link to this query:" data-he="קישור לחיפוש זה:" data-es="Enlace a esta consulta:"></div>
+        <div data-en="Link to this query:" data-he="קישור לחיפוש זה:" data-es="Enlace a esta consulta:" data-de="Link zu dieser Abfrage:"></div>
         <a id="linkToQuery"></a>
     </div>
     <script src="english_words.txt" type="text/plain" id="wordsFile"></script>
     <script src="hebrew_words.txt" type="text/plain" id="hebrewWordsFile"></script>
     <script src="spanish_words.txt" type="text/plain" id="spanishWordsFile"></script>
+    <script src="german_words.txt" type="text/plain" id="germanWordsFile"></script>
     <script src="app.js"></script>
 </body>
 </html>

@@ -449,6 +449,11 @@ describe('DictionaryRegex - Language Support', () => {
         await dictionaryRegex.loadWords();
         expect(global.fetch).toHaveBeenCalledWith('spanish_words.txt');
 
+        // Change to German
+        dictionaryRegex.currentLanguage = 'de';
+        await dictionaryRegex.loadWords();
+        expect(global.fetch).toHaveBeenCalledWith('german_words.txt');
+
         // Change back to English
         dictionaryRegex.currentLanguage = 'en';
         await dictionaryRegex.loadWords();
@@ -483,6 +488,14 @@ describe('DictionaryRegex - Language Support', () => {
         // Verify pushState was called with Spanish
         const esCall = pushStateSpy.mock.calls[pushStateSpy.mock.calls.length - 1];
         expect(String(esCall[2])).toContain('lang=es');
+
+        // Change to German
+        dictionaryRegex.currentLanguage = 'de';
+        dictionaryRegex.updateUrlWithLanguage();
+
+        // Verify pushState was called with German
+        const deCall = pushStateSpy.mock.calls[pushStateSpy.mock.calls.length - 1];
+        expect(String(deCall[2])).toContain('lang=de');
 
         pushStateSpy.mockRestore();
     });

@@ -65,6 +65,8 @@ class DictionaryRegex {
                 file = 'hebrew_words.txt';
             } else if (this.currentLanguage === 'es') {
                 file = 'spanish_words.txt';
+            } else if (this.currentLanguage === 'de') {
+                file = 'german_words.txt';
             }
             const response = await fetch(file);
             if (!response.ok) throw new Error('Failed to load dictionary');
@@ -407,8 +409,8 @@ class DictionaryRegex {
     updateQueryLink(pattern) {
         const url = new URL(window.location.href);
         url.hash = '#' + encodeURIComponent(pattern);
-        if (this.currentLanguage === 'he') {
-            url.searchParams.set('lang', 'he');
+        if (this.currentLanguage !== 'en') {
+            url.searchParams.set('lang', this.currentLanguage);
         }
         this.elements.queryLink.href = url.toString();
         this.elements.queryLink.textContent = url.toString();
@@ -478,6 +480,28 @@ class DictionaryRegex {
                 {
                     pattern: 'll.*ll',
                     description: 'Palabras con dos "ll"'
+                }
+            ],
+            de: [
+                {
+                    pattern: 'ung$',
+                    description: 'Wörter, die auf „ung“ enden'
+                },
+                {
+                    pattern: '^[A-ZÄÖÜ]',
+                    description: 'Wörter, die mit einem Großbuchstaben beginnen (Substantive)'
+                },
+                {
+                    pattern: '[äöüß]',
+                    description: 'Wörter mit Umlauten oder ß'
+                },
+                {
+                    pattern: 'schiff.*fahrt',
+                    description: 'Zusammengesetzte Wörter mit „schiff“ und „fahrt“'
+                },
+                {
+                    pattern: '^(.)(.)(.).\\3\\2\\1$',
+                    description: '7-Buchstaben-Palindrome'
                 }
             ],
             he: [

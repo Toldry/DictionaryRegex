@@ -55,3 +55,7 @@ https://raw.githubusercontent.com/words/an-array-of-spanish-words/refs/heads/mas
 
 Hebrew words:
 https://he.wiktionary.org
+
+German words:
+`german_words.txt` (~1.6M German words)
+
